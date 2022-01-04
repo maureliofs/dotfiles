@@ -5,7 +5,7 @@ then
     rm -rf ~/.config/alacritty/*
     stow alacritty/ --target ~/.config/alacritty/
 else
-    mkdir ~/.config/alacritty/
+    mkdir -p ~/.config/alacritty/
     stow alacritty/ --target ~/.config/alacritty/
 fi
 
@@ -14,7 +14,7 @@ then
     rm -rf ~/.config/i3/*
     stow i3/ --target ~/.config/i3/
 else
-    mkdir ~/.config/i3/
+    mkdir -p ~/.config/i3/
     stow i3/ --target ~/.config/i3/
 fi
 
@@ -23,7 +23,7 @@ then
     rm -rf ~/.config/i3blocks/*
     stow i3blocks/ --target ~/.config/i3blocks/
 else
-    mkdir ~/.config/i3blocks/
+    mkdir -p ~/.config/i3blocks/
     stow i3blocks/ --target ~/.config/i3blocks/
 fi
 
@@ -32,7 +32,7 @@ then
     rm -rf ~/.config/rofi/*
     stow rofi/ --target ~/.config/rofi/
 else
-    mkdir ~/.config/rofi/
+    mkdir -p ~/.config/rofi/
     stow rofi/ --target ~/.config/rofi/
 fi
 
@@ -41,7 +41,7 @@ then
     rm -rf ~/.config/picom/*
     stow picom/ --target ~/.config/picom/
 else
-    mkdir ~/.config/picom/
+    mkdir -p ~/.config/picom/
     stow picom/ --target ~/.config/picom/
 fi
 
