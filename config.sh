@@ -60,3 +60,11 @@ then
 else
     stow vim/ 
 fi
+
+if [ -f ~/.zshrc ]
+then
+    rm -f ~/.zshrc
+    stow zsh/ 
+else
+    stow zsh/ 
+fi
