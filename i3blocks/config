@@ -4,18 +4,18 @@ markup=none
 
 #[i3-focusedwindow]
 #label=[]=
-#command=/home/mrc/.config/i3blocks/i3-focusedwindow/i3-focusedwindow 50
+#command=$HOME/.config/i3blocks/i3-focusedwindow/i3-focusedwindow 50
 #interval=persist
 
 [mediaplayer]
-command=/home/mrc/.config/i3blocks/mediaplayer/mediaplayer
+command=$HOME/.config/i3blocks/mediaplayer/mediaplayer
 instance=spotify
 interval=5
 signal=10
 
 [cpu_usage]
 color=#f44336
-command=/home/mrc/.config/i3blocks/cpu_usage/cpu_usage
+command=$HOME/.config/i3blocks/cpu_usage/cpu_usage
 label=CPU 
 label= 
 interval=10
@@ -23,20 +23,20 @@ interval=10
 
 [memory]
 color=#f44336
-command=/home/mrc/.config/i3blocks/memory/memory
+command=$HOME/.config/i3blocks/memory/memory
 label=MEM 
 interval=30
 
 [disk]
 color=#2a87da
-command=/home/mrc/.config/i3blocks/disk/disk
+command=$HOME/.config/i3blocks/disk/disk
 #label=HOME 
 label=  
-DIR=/home/mrc
+DIR=$HOME
 interval=30
 
 [iface]
-command=/home/mrc/.config/i3blocks/iface/iface
+command=$HOME/.config/i3blocks/iface/iface
 #IFACE=wlan0
 color=#00FF00
 label=
@@ -44,20 +44,20 @@ interval=10
 #separator=false
 
 [battery2]
-command=/home/mrc/.config/i3blocks/battery2/battery2
+command=$HOME/.config/i3blocks/battery2/battery2
 markup=pango
 interval=30
 
 [volume]
 color=#6643bd
-command=/home/mrc/.config/i3blocks/volume/volume
+command=$HOME/.config/i3blocks/volume/volume
 LABEL=♪ 
 #LABEL=VOL 
 interval=once
 signal=10
 
 [rofi-calendar]
-command=/home/mrc/.config/i3blocks/rofi-calendar/rofi-calendar
+command=$HOME/.config/i3blocks/rofi-calendar/rofi-calendar
 color=#999999
 interval=3600
 BAR_POSITION=top
@@ -71,4 +71,4 @@ interval=1
 [shutdown_menu]
 color=#ffffff
 full_text=Quit
-command=/home/mrc/.config/i3blocks/shutdown_menu/shutdown_menu
+command=$HOME/.config/i3blocks/shutdown_menu/shutdown_menu
