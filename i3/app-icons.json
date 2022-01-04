@@ -1,0 +1,15 @@
+{
+	"firefox": "firefox",
+	"chromium-browser": "chrome",
+	"chrome": "chrome",
+	"google-chrome": "chrome",
+	"alacritty": "terminal",
+	"thunderbird": "envelope",
+	"jetbrains-idea-ce": "edit",
+	"nautilus": "folder-open",
+	"thunar": "folder-open",
+	"clementine": "music",
+	"vlc": "play",
+	"signal": "comment",
+	"_no_match": "question"
+}

@@ -1,0 +1,9 @@
+configuration {
+	modi: "window,drun,ssh,run,combi";
+	terminal: "xfce4-terminal";
+	font: "Font Awesome 11";
+ 	combi-modi: "window,drun,ssh";
+	icon-theme: "Papirus";
+	show-icons: true;
+}
+@theme "/home/mrc/.config/rofi/themes/Arc-Dark.rasi"
