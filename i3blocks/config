@@ -68,12 +68,6 @@ color=#f0a557
 label= 
 interval=1
 
-#[mediaplayer]
-# This picks any player, with vlc as first, and spotify as last choice
-#instance=vlc,%any,spotify
-#interval=5
-#signal=10
-
 [shutdown_menu]
 color=#ffffff
 full_text=Quit
