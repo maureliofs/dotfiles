@@ -162,6 +162,7 @@ gaps inner 8
 gaps outer 1
 
 # EXEC START
+xset b off & # desliga o bip do terminal
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork # Ativar bloqueio de tela
 exec --no-startup-id nm-applet # Ativar icone de rede na system tray
 exec --no-startup-id nitrogen --restore # Restaurar wallpaper
