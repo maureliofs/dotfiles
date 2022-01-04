@@ -1,8 +1,62 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-stow alacritty/ --target ~/.config/alacritty/
-stow i3blocks/ --target ~/.config/i3blocks/
-stow rofi/ --target ~/.config/rofi/
-stow picom/ --target ~/.config/picom/
-stow git/
-stow vim/ 
+if [ -d ~/.config/alacritty/ ]
+then
+    rm -rf ~/.config/alacritty/*
+    stow alacritty/ --target ~/.config/alacritty/
+else
+    mkdir ~/.config/alacritty/
+    stow alacritty/ --target ~/.config/alacritty/
+fi
+
+if [ -d ~/.config/i3/ ]
+then
+    rm -rf ~/.config/i3/*
+    stow i3/ --target ~/.config/i3/
+else
+    mkdir ~/.config/i3/
+    stow i3/ --target ~/.config/i3/
+fi
+
+if [ -d ~/.config/i3blocks/ ]
+then
+    rm -rf ~/.config/i3blocks/*
+    stow i3blocks/ --target ~/.config/i3blocks/
+else
+    mkdir ~/.config/i3blocks/
+    stow i3blocks/ --target ~/.config/i3blocks/
+fi
+
+if [ -d ~/.config/rofi/ ]
+then
+    rm -rf ~/.config/rofi/*
+    stow rofi/ --target ~/.config/rofi/
+else
+    mkdir ~/.config/rofi/
+    stow rofi/ --target ~/.config/rofi/
+fi
+
+if [ -d ~/.config/picom/ ]
+then
+    rm -rf ~/.config/picom/*
+    stow picom/ --target ~/.config/picom/
+else
+    mkdir ~/.config/picom/
+    stow picom/ --target ~/.config/picom/
+fi
+
+if [ -f ~/.gitconfig ]
+then
+    rm -f ~/.gitconfig
+    stow git/
+else
+    stow git/
+fi
+
+if [ -f ~/.vimrc ]
+then
+    rm -f ~/.vimrc
+    stow vim/ 
+else
+    stow vim/ 
+fi
