@@ -7,6 +7,13 @@ markup=none
 #command=$HOME/.config/i3blocks/i3-focusedwindow/i3-focusedwindow 50
 #interval=persist
 
+[window title]
+command=xdotool getactivewindow getwindowname
+interval=2
+color=#999999
+min_width=1100
+align=center
+
 [mediaplayer]
 command=$HOME/.config/i3blocks/mediaplayer/mediaplayer
 instance=spotify
