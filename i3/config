@@ -171,3 +171,4 @@ exec --no-startup-id picom -f -i 1 -c & # Ativar transparência
 #exec --no-startup-id picom -f --xrender-fence
 exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
 exec_always --no-startup-id exec i3-workspace-names-daemon
+exec xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
