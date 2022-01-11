@@ -7,6 +7,13 @@ markup=none
 #command=$HOME/.config/i3blocks/i3-focusedwindow/i3-focusedwindow 50
 #interval=persist
 
+[window title]
+command=xdotool getactivewindow getwindowname
+interval=2
+color=#999999
+min_width=850
+align=center
+
 [mediaplayer]
 command=$HOME/.config/i3blocks/mediaplayer/mediaplayer
 instance=spotify
@@ -25,14 +32,14 @@ interval=10
 color=#f44336
 command=$HOME/.config/i3blocks/memory/memory
 label=MEM 
-interval=30
+interval=10
 
 [disk]
 color=#2a87da
 command=$HOME/.config/i3blocks/disk/disk
 #label=HOME 
-label=  
-DIR=$HOME
+label= 
+#DIR=$HOME
 interval=30
 
 [iface]
@@ -70,5 +77,5 @@ interval=1
 
 [shutdown_menu]
 color=#ffffff
-full_text=Quit
+full_text=
 command=$HOME/.config/i3blocks/shutdown_menu/shutdown_menu
