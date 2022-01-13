@@ -104,6 +104,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+#-------------------------------------------------------------------
+# Resize Window
+#-------------------------------------------------------------------
+
 # mode "resize" {
 #         bindsym Left resize shrink width 10 px or 10 ppt
 #         bindsym Down resize grow height 10 px or 10 ppt
@@ -118,20 +122,22 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # 
 # bindsym $mod+r mode "resize"
 
-#-------------------------------------------------------------------
-# Resize Window
-#-------------------------------------------------------------------
 bindsym $mod+Control Right  resize  grow     width  5 px or 5 ppt
 bindsym $mod+Control Left   resize  shrink   width  5 px or 5 ppt
 bindsym $mod+Control Up     resize  grow     height 5 px or 5 ppt
 bindsym $mod+Control Down   resize  shrink   height 5 px or 5 ppt
 
+
+#-------------------------------------------------------------------
+# Comandos de sistema
+#-------------------------------------------------------------------
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+p  exec /home/mrc/.config/i3blocks/shutdown_menu/shutdown_menu
 
 #-------------------------------------------------------------------
 # Atalhos de programas
