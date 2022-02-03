@@ -4,25 +4,24 @@ markup=none
 
 #[i3-focusedwindow]
 #label=[]=
-#command=$HOME/.config/i3blocks/i3-focusedwindow/i3-focusedwindow 50
+#command=/home/mrc/.config/i3blocks/i3-focusedwindow/i3-focusedwindow 50
 #interval=persist
 
-[window title]
-command=xdotool getactivewindow getwindowname
-interval=2
-color=#999999
-min_width=850
-align=center
+#[window title]
+#command=xdotool getactivewindow getwindowname
+#interval=2
+#color=#999999
+#min_width=850
+#align=center
 
-[mediaplayer]
-command=$HOME/.config/i3blocks/mediaplayer/mediaplayer
-instance=spotify
+[spotify]
+label=
+command=/home/mrc/.config/i3blocks/i3blocks-spotify/spotify.py
+color=#81b71a
 interval=5
-signal=10
 
 [cpu_usage]
-color=#f44336
-command=$HOME/.config/i3blocks/cpu_usage/cpu_usage
+command=/home/mrc/.config/i3blocks/cpu_usage/cpu_usage
 label=CPU 
 label= 
 interval=10
@@ -30,44 +29,45 @@ interval=10
 
 [memory]
 color=#f44336
-command=$HOME/.config/i3blocks/memory/memory
+command=/home/mrc/.config/i3blocks/memory/memory
 label=MEM 
 interval=10
 
 [disk]
 color=#2a87da
-command=$HOME/.config/i3blocks/disk/disk
+command=/home/mrc/.config/i3blocks/disk/disk
 #label=HOME 
 label= 
-#DIR=$HOME
+#DIR=/home/mrc
 interval=30
 
-[iface]
-command=$HOME/.config/i3blocks/iface/iface
+#[iface]
+#command=/home/mrc/.config/i3blocks/iface/iface
 #IFACE=wlan0
-color=#00FF00
-label=
-interval=10
+#color=#00FF00
+#label=
+#interval=10
 #separator=false
 
 [battery2]
-command=$HOME/.config/i3blocks/battery2/battery2
+command=/home/mrc/.config/i3blocks/battery2/battery2
 markup=pango
 interval=30
 
 [volume]
 color=#6643bd
-command=$HOME/.config/i3blocks/volume/volume
-LABEL=♪ 
+command=/home/mrc/.config/i3blocks/volume/volume
+#label=♪ 
+label= 
 #LABEL=VOL 
 interval=once
 signal=10
 
 [rofi-calendar]
-command=$HOME/.config/i3blocks/rofi-calendar/rofi-calendar
+command=/home/mrc/.config/i3blocks/rofi-calendar/rofi-calendar
 color=#999999
 interval=3600
-BAR_POSITION=top
+#bar_position=top
 
 [time]
 command=date +'%H:%M:%S'
@@ -78,4 +78,4 @@ interval=1
 [shutdown_menu]
 color=#ffffff
 full_text=
-command=$HOME/.config/i3blocks/shutdown_menu/shutdown_menu
+command=/home/mrc/.config/i3blocks/shutdown_menu/shutdown_menu

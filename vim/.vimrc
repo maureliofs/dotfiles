@@ -23,7 +23,7 @@ set ruler
 set undolevels=1000
 set backspace=indent,eol,start
 
-set mouse=a
+set mouse-=a
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))

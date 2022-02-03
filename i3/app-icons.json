@@ -3,7 +3,9 @@
 	"chromium-browser": "chrome",
 	"chrome": "chrome",
 	"google-chrome": "chrome",
+	"brave-browser": "chrome",
 	"alacritty": "terminal",
+	"xfce4-terminal": "terminal",
 	"thunderbird": "envelope",
 	"jetbrains-idea-ce": "edit",
 	"nautilus": "folder-open",
@@ -12,5 +14,11 @@
 	"vlc": "play",
 	"celluloid": "play",
 	"signal": "comment",
-	"_no_match": "question"
+	"asbru-cm": "terminal",
+	"discord": "discord",
+	"spotify": "spotify",
+	"notion-app": "edit",
+	"marktext": "edit",
+	"mousepad": "edit",
+	"_no_match": ""
 }

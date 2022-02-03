@@ -17,15 +17,14 @@ floating_modifier $mod
 # Atalhos
 # -------------------------------------------------------------------
 # start a terminal
-#bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "rofi -show combi"
 
 # direction keys 
 bindsym $mod+Left focus left
@@ -142,10 +141,15 @@ bindsym $mod+Shift+p  exec /home/mrc/.config/i3blocks/shutdown_menu/shutdown_men
 #-------------------------------------------------------------------
 # Atalhos de programas
 # ------------------------------------------------------------------
+bindsym $mod+d exec --no-startup-id "rofi -show drun"
+bindsym $mod+Shift+d exec --no-startup-id "rofi -show find -modi find:~/.config/rofi/rofi-scripts/rofi-finder/finder.sh" 
 bindsym $mod+e exec thunar
 bindsym $mod+b exec brave-browser
 bindsym $mod+F2 exec firefox
+bindsym $mod+L exec i3lock-fancy
 bindsym Print exec flameshot gui
+bindsym $mod+c exec flatpak run com.discordapp.Discord
+bindsym $mod+s exec spotify
 
 #-------------------------------------------------------------------
 # Floating Windows
@@ -197,12 +201,14 @@ gaps outer 1
 # Exec Start
 #-------------------------------------------------------------------
 exec --no-startup-id xset b off & # desliga o bip do terminal
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork # Ativar bloqueio de tela
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork # Ativar bloqueio de tela
 exec --no-startup-id nm-applet # Ativar icone de rede na system tray
 exec_always --no-startup-id nitrogen --restore # Restaurar wallpaper
 exec_always --no-startup-id numlockx on # Ativar numlock automaticamente
 exec --no-startup-id picom -f -i 1 -c & # Ativar transparência
 #exec --no-startup-id picom -f --xrender-fence
 exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
-exec_always --no-startup-id exec i3-workspace-names-daemon
-exec_always --mo-startup-id  xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id ~/.dropbox-dist/dropboxd &
+exec_always --no-startup-id i3-workspace-names-daemon
+exec_always --no-startup-id  xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id setxkbmap -model pc104 -layout us_intl
