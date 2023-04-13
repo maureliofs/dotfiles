@@ -1,14 +1,29 @@
 set $mod Mod4
 
-#font pango:monospace 10
-font pango:Font Awesome 11
+# font pango:monospace 10
+# font pango:Font Awesome 11
+font pango:Inconsolata for Powerline 11
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessUp exec --no-startup-id  brightnessctl s +15% # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 15%- # decrease screen brightness
+
+# Multimedia keys
+bindsym XF86Tools exec firefox
+bindsym XF86HomePage exec nautilus
+bindsym XF86Explorer exec alacritty -e ranger
+bindsym XF86Calculator exec gnome-calculator
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -17,8 +32,8 @@ floating_modifier $mod
 # Atalhos
 # -------------------------------------------------------------------
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
-#bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -46,7 +61,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
+bindsym $mod+w layout tabbed
 # bindsym $mod+e layout toggle split
 bindsym $mod+Shift+question layout toggle all
 
@@ -62,8 +77,16 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+bindsym Mod1+Tab exec ~/.config/i3/next.sh 
+bindsym $mod+Tab exec ~/.config/i3/previous.sh
+
+# activate and deactivate window title bar
+bindsym $mod+t border toggle
 # focus the child container
 # bindsym $mod+d focus child
+
+# The middle button and a modifier over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
 
 # ------------------------------------------------------------------
 # Workspaces
@@ -136,20 +159,26 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+p  exec /home/mrc/.config/i3blocks/shutdown_menu/shutdown_menu
+bindsym $mod+Shift+p exec /home/marco/.config/i3blocks/shutdown_menu/shutdown_menu
 
 #-------------------------------------------------------------------
 # Atalhos de programas
 # ------------------------------------------------------------------
 bindsym $mod+d exec --no-startup-id "rofi -show drun"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show find -modi find:~/.config/rofi/rofi-scripts/rofi-finder/finder.sh" 
-bindsym $mod+e exec thunar
-bindsym $mod+b exec brave-browser
+# bindsym $mod+e exec thunar
+bindsym $mod+e exec nautilus
+bindsym $mod+Shift+Return exec brave-browser
 bindsym $mod+F2 exec firefox
-bindsym $mod+L exec i3lock-fancy
+bindsym $mod+F3 exec xfce4-notifyd-config
+bindsym $mod+F4 exec authy
+bindsym $mod+F11 exec alacritty -e ranger
+bindsym $mod+L exec --no-startup-id i3lock-fancy & sleep 5 && xset dpms force off
 bindsym Print exec flameshot gui
-bindsym $mod+c exec flatpak run com.discordapp.Discord
-bindsym $mod+s exec spotify
+# bindsym $mod+c exec flatpak run com.discordapp.Discord
+bindsym $mod+c exec flatpak run com.slack.Slack
+bindsym $mod+s exec bash ~/.config/rofi/rofi-locate.sh
+bindsym $mod+Shift+m move workspace to output next
 
 #-------------------------------------------------------------------
 # Floating Windows
@@ -157,21 +186,47 @@ bindsym $mod+s exec spotify
 for_window [class="[Gg]alculator"] floating enable
 for_window [class="[Ll]xappearance"] floating enable
 for_window [class="[Nn]itrogen"] floating enable
+for_window [class="[Pp]avucontrol"] floating enable
+for_window [class="[Aa]randr"] floating enable
+for_window [class="[Gg]nome-calculator"] floating enable
 
 #-------------------------------------------------------------------
 # Atribuir determinado programa a um workspace especifico
 #-------------------------------------------------------------------
-# assign [class="[Tt]hunderbird"]                          $ws9
-# assign [class="TelegramDesktop"]                         $ws8
+assign [class="Slack"] 										$ws1
+assign [class="Spotify"] 									$ws8
+assign [class="obsidian"]   							$ws3
+# assign [class="TelegramDesktop"]        $ws8
+# assign [class="[Tt]hunderbird"]         $ws9
+
+#-------------------------------------------------------------------
+# Automatically putting workspaces on specific screens 
+#-------------------------------------------------------------------
+workspace 1 output "eDP-1"
+workspace 2 output "HDMI-1"
+workspace 3 output "DP-1"
+workspace 4 output "HDMI-1"
+workspace 8 output "DP-1"
+workspace 9 output "DP-1"
+workspace 10 output "DP-1"
 
 #-------------------------------------------------------------------
 # Bar
 #-------------------------------------------------------------------
 bar {
-        #status_command i3status
+        font pango: Inconsolata for Powerline 12
+        # font pango: Inconsolata Awesome 12
+        # font pango: Font Awesome 12
+        # status_command i3status
         position top
-	status_command i3blocks
-        
+	#status_command i3blocks
+        status_command ~/.config/i3/bumblebee-status/bumblebee-status \
+        -m spotify cpu memory disk battery amixer datetime dunstctl \
+        -p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
+        -t iceberg-contrast 
+
+        tray_output HDMI-1
+
 	colors {
 		background #181818
 		statusline #ffffff
@@ -184,18 +239,25 @@ bar {
 	}	
 }
 
+
 #-------------------------------------------------------------------
 # Bordas
 #-------------------------------------------------------------------
 for_window [class=".*"] border pixel 1
 new_window 1pixel
-client.focused #ffffff #ffffff #ffffff #2986cc #ffffff
+# client.focused #ffffff #333333 #ffffff #2986cc #ffffff
+client.focused #ffffff #333333 #ffffff #A6BF7F #ffffff
+
 
 #-------------------------------------------------------------------
 # Gaps
 #-------------------------------------------------------------------
-gaps inner 8
-gaps outer 1
+# gaps inner 8
+# gaps outer 1
+
+
+focus_follows_mouse no
+
 
 #-------------------------------------------------------------------
 # Exec Start
@@ -205,10 +267,14 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork # A
 exec --no-startup-id nm-applet # Ativar icone de rede na system tray
 exec_always --no-startup-id nitrogen --restore # Restaurar wallpaper
 exec_always --no-startup-id numlockx on # Ativar numlock automaticamente
-exec --no-startup-id picom -f -i 1 -c & # Ativar transparência
-#exec --no-startup-id picom -f --xrender-fence
-exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
-exec_always --no-startup-id ~/.dropbox-dist/dropboxd &
+exec_always --no-startup-id picom -f -i 1 -c & # Ativar transparência
+# exec --no-startup-id picom -f --xrender-fence
+# exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
+# exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
+#exec --no-startup-id /usr/bin/dunst & # Ativar daemon de notificacoes dunst
+# exec_always --no-startup-id ~/.dropbox-dist/dropboxd &
 exec_always --no-startup-id i3-workspace-names-daemon
-exec_always --no-startup-id  xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
-exec --no-startup-id setxkbmap -model pc104 -layout us_intl
+exec_always --no-startup-id xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
+# exec_always "setxkbmap -model pc104 -layout us_intl,br -variant ,, -option grp:alt_shift_toggle"
+exec_always --no-startup-id autotiling

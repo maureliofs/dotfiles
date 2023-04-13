@@ -33,4 +33,8 @@ endif
 
 call plug#begin()
 Plug 'vim-airline/vim-airline'
+Plug 'sainnhe/everforest'
 call plug#end()
+
+set background=dark
+colorscheme everforest

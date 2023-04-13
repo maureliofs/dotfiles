@@ -45,13 +45,13 @@ else
     stow picom/ --target ~/.config/picom/
 fi
 
-if [ -f ~/.gitconfig ]
-then
-    rm -f ~/.gitconfig
-    stow git/
-else
-    stow git/
-fi
+#if [ -f ~/.gitconfig ]
+#then
+#    rm -f ~/.gitconfig
+#    stow git/
+#else
+#    stow git/
+#fi
 
 if [ -f ~/.vimrc ]
 then

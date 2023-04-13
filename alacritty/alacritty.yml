@@ -1,47 +1,147 @@
-background_opacity: 0.9
+window_opacity: 0.9
 
 font:
   normal:
-    family: "Fira Code"
-    style: "Retina"
+    # family: "Inconsolata for Powerline"
+    family: "MesloLGS NF"
+    #family: "JetBrains Mono NL"
+    style: Regular 
+    # style: "Retina"
   size: 12.0
 
-# Colors (Arc Dark)
-colors:
-  # Default colors
-  primary:
-    background: '0x383c4a'
-    foreground: '0xd3dae3'
+schemes:
+  everforest_dark_hard: &everforest_dark_hard
+    primary:
+      background: '#272e33'
+      foreground: '#d3c6aa'
+    normal:
+      black:   '#414b50'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+    bright:
+      black:   '#475258'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+  everforest_dark_medium: &everforest_dark_medium
+    primary:
+      background: '#2d353b'
+      foreground: '#d3c6aa'
+    normal:
+      black:   '#475258'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+    bright:
+      black:   '#475258'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+  everforest_dark_soft: &everforest_dark_soft
+    primary:
+      background: '#333c43'
+      foreground: '#d3c6aa'
+    normal:
+      black:   '#4d5960'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+    bright:
+      black:   '#4d5960'
+      red:     '#e67e80'
+      green:   '#a7c080'
+      yellow:  '#dbbc7f'
+      blue:    '#7fbbb3'
+      magenta: '#d699b6'
+      cyan:    '#83c092'
+      white:   '#d3c6aa'
+  everforest_light_hard: &everforest_light_hard
+    primary:
+      background: '#fffbef'
+      foreground: '#5c6a72'
+    normal:
+      black:   '#5c6a72'
+      red:     '#f85552'
+      green:   '#8da101'
+      yellow:  '#dfa000'
+      blue:    '#3a94c5'
+      magenta: '#df69ba'
+      cyan:    '#35a77c'
+      white:   '#e8e5d5'
+    bright:
+      black:   '#5c6a72'
+      red:     '#f85552'
+      green:   '#8da101'
+      yellow:  '#dfa000'
+      blue:    '#3a94c5'
+      magenta: '#df69ba'
+      cyan:    '#35a77c'
+      white:   '#e8e5d5'
+  everforest_light_medium: &everforest_light_medium
+    primary:
+      background: '#fdf6e3'
+      foreground: '#5c6a72'
+    normal:
+      black:   '#5c6a72'
+      red:     '#f85552'
+      green:   '#8da101'
+      yellow:  '#dfa000'
+      blue:    '#3a94c5'
+      magenta: '#df69ba'
+      cyan:    '#35a77c'
+      white:   '#e0dcc7'
+    bright:
+      black:   '#5c6a72'
+      red:     '#f85552'
+      green:   '#8da101'
+      yellow:  '#dfa000'
+      blue:    '#3a94c5'
+      magenta: '#df69ba'
+      cyan:    '#35a77c'
+      white:   '#e0dcc7'
+  everforest_light_soft: &everforest_light_soft
+    primary:
+      background: '#f3ead3'
+      foreground: '#5c6a72'
+    normal:
+      black:   '#5c6a72'
+      red:     '#f85552'
+      green:   '#8da101'
+      yellow:  '#dfa000'
+      blue:    '#3a94c5'
+      magenta: '#df69ba'
+      cyan:    '#35a77c'
+      white:   '#d8d3ba'
+    bright:
+      black:   '#5c6a72'
+      red:     '#f85552'
+      green:   '#8da101'
+      yellow:  '#dfa000'
+      blue:    '#3a94c5'
+      magenta: '#df69ba'
+      cyan:    '#35a77c'
+      white:   '#d8d3ba'
 
-  # Normal colors
-  normal:
-    black:   '0x4b5164'
-    red:     '0xe14245'
-    green:   '0x5ca75b'
-    yellow:  '0xf6ab32'
-    blue:    '0x4877b1'
-    magenta: '0xa660c3'
-    cyan:    '0x5294e2'
-    white:   '0xa9a9aa'
-
-  # Bright colors
-  bright:
-    black:   '0x616981'
-    red:     '0xe16f7e'
-    green:   '0xadd488'
-    yellow:  '0xfdc35f'
-    blue:    '0x8ca9bf'
-    magenta: '0xe2afec'
-    cyan:    '0x73c5e2'
-    white:   '0xfcfcfc'
-
-  # Dim colors (Optional)
-  dim:
-    black:   '0x2c2f3a'
-    red:     '0x783228'
-    green:   '0x4b7c16'
-    yellow:  '0xb65619'
-    blue:    '0x2b486b'
-    magenta: '0x614a73'
-    cyan:    '0x1b668f'
-    white:   '0x63686d'
+# Apply
+colors: *everforest_dark_hard
