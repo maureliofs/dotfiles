@@ -15,5 +15,6 @@ dnf install stow
 ```
 git clone git@github.com:maureliofs/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-./config.sh
+stow */ # Everything
+stow i3 # Just i3 config
 ```

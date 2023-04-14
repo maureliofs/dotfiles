@@ -1,0 +1,3 @@
+alias i3_config='nvim ~/.config/i3/config'
+alias upd='sudo apt update && sudo apt upgrade -y'
+alias ncspot='flatpak run io.github.hrkfdn.ncspot'
