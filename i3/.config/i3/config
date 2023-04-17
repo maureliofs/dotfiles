@@ -193,7 +193,7 @@ for_window [class="[Gg]nome-calculator"] floating enable
 #-------------------------------------------------------------------
 # Atribuir determinado programa a um workspace especifico
 #-------------------------------------------------------------------
-assign [class="Slack"] 										$ws1
+#assign [class="Slack"] 										$ws1
 assign [class="Spotify"] 									$ws8
 assign [class="obsidian"]   							$ws3
 # assign [class="TelegramDesktop"]        $ws8
@@ -214,18 +214,18 @@ workspace 10 output "DP-1"
 # Bar
 #-------------------------------------------------------------------
 bar {
-        font pango:Inconsolata for Powerline 11
-        # font pango: Inconsolata Awesome 12
-        # font pango: Font Awesome 12
-        # status_command i3status
-        position top
-	#status_command i3blocks
-        status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-        -m spotify cpu memory disk battery amixer datetime dunstctl \
-        -p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
-        -t iceberg-contrast 
+	font pango:Inconsolata for Powerline 11
+  # font pango: Inconsolata Awesome 12
+  # font pango: Font Awesome 12
+  # status_command i3status
+	position top
+	# status_command i3blocks
+  status_command ~/.config/i3/bumblebee-status/bumblebee-status \
+		-m spotify cpu memory disk battery amixer datetime dunstctl \
+  	-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
+  	-t iceberg-contrast 
 
-        tray_output HDMI-1
+   tray_output HDMI-1
 
 	colors {
 		background #181818
@@ -277,4 +277,4 @@ exec_always --no-startup-id i3-workspace-names-daemon
 exec_always --no-startup-id xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
 # exec_always "setxkbmap -model pc104 -layout us_intl,br -variant ,, -option grp:alt_shift_toggle"
-exec_always --no-startup-id autotiling
+# exec_always --no-startup-id autotiling
