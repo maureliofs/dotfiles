@@ -172,13 +172,15 @@ bindsym $mod+Shift+Return exec brave-browser
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec xfce4-notifyd-config
 bindsym $mod+F4 exec authy
-bindsym $mod+F11 exec alacritty -e ranger
+# bindsym $mod+F11 exec alacritty -e ranger
 bindsym $mod+L exec --no-startup-id i3lock-fancy & sleep 5 && xset dpms force off
 bindsym Print exec flameshot gui
 # bindsym $mod+c exec flatpak run com.discordapp.Discord
 bindsym $mod+c exec flatpak run com.slack.Slack
 bindsym $mod+s exec bash ~/.config/rofi/rofi-locate.sh
 bindsym $mod+Shift+m move workspace to output next
+bindsym $mod+p exec evince
+bindsym $mod+b [class="ttrm"] scratchpad show; move position center
 
 #-------------------------------------------------------------------
 # Floating Windows
@@ -189,6 +191,8 @@ for_window [class="[Nn]itrogen"] floating enable
 for_window [class="[Pp]avucontrol"] floating enable
 for_window [class="[Aa]randr"] floating enable
 for_window [class="[Gg]nome-calculator"] floating enable
+for_window [class="[Gg]nome-calendar"] floating enable
+for_window [class="ttrm"] move scratchpad
 
 #-------------------------------------------------------------------
 # Atribuir determinado programa a um workspace especifico
@@ -214,16 +218,16 @@ workspace 10 output "DP-1"
 # Bar
 #-------------------------------------------------------------------
 bar {
-	font pango:Inconsolata for Powerline 11
-  # font pango: Inconsolata Awesome 12
-  # font pango: Font Awesome 12
+	# font pango:Inconsolata for Powerline 11
+  font pango: Hack Nerd Font Regular 10
+  # font pango: JetBrainsMono Nerd Font Regular 10
   # status_command i3status
 	position top
 	# status_command i3blocks
   status_command ~/.config/i3/bumblebee-status/bumblebee-status \
 		-m spotify cpu memory disk battery amixer datetime dunstctl \
   	-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
-  	-t iceberg-contrast 
+  	-t gruvbox-powerline
 
    tray_output HDMI-1
 
@@ -256,7 +260,7 @@ client.focused #ffffff #333333 #ffffff #A6BF7F #ffffff
 # gaps outer 1
 
 
-focus_follows_mouse no
+focus_follows_mouse yes
 
 
 #-------------------------------------------------------------------
@@ -278,3 +282,4 @@ exec_always --no-startup-id xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "lib
 exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
 # exec_always "setxkbmap -model pc104 -layout us_intl,br -variant ,, -option grp:alt_shift_toggle"
 # exec_always --no-startup-id autotiling
+exec_always --no-startup-id alacritty --class ttrm,ttrm

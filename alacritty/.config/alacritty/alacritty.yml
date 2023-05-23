@@ -2,9 +2,9 @@ window_opacity: 0.9
 
 font:
   normal:
-    # family: "Inconsolata for Powerline"
-    family: "MesloLGS NF"
-    #family: "JetBrains Mono NL"
+    family: "JetBrainsMono Nerd Font"
+    # family: "MesloLGS NF"
+    # family: "Hack Nerd Font"
     style: Regular 
     # style: "Retina"
   size: 12.0
