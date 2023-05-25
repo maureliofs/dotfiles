@@ -15,7 +15,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 15%- # decrea
 
 # Multimedia keys
 bindsym XF86Tools exec firefox
-bindsym XF86HomePage exec nautilus
+bindsym XF86HomePage exec nemo 
 bindsym XF86Explorer exec alacritty -e ranger
 bindsym XF86Calculator exec gnome-calculator
 
@@ -173,8 +173,8 @@ bindsym $mod+Shift+p exec /home/marco/.config/i3blocks/shutdown_menu/shutdown_me
 bindsym $mod+d exec --no-startup-id "rofi -show drun"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show find -modi find:~/.config/rofi/rofi-scripts/rofi-finder/finder.sh" 
 # bindsym $mod+e exec thunar
-bindsym $mod+e exec nautilus
-bindsym $mod+Shift+Return exec brave-browser
+bindsym $mod+e exec nemo 
+bindsym $mod+Shift+Return exec brave
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec xfce4-notifyd-config
 bindsym $mod+F4 exec authy
@@ -203,11 +203,11 @@ for_window [class="ttrm"] move scratchpad
 #-------------------------------------------------------------------
 # Atribuir determinado programa a um workspace especifico
 #-------------------------------------------------------------------
-#assign [class="Slack"] 										$ws1
-assign [class="Spotify"] 									$ws8
-assign [class="obsidian"]   							$ws3
-# assign [class="TelegramDesktop"]        $ws8
-# assign [class="[Tt]hunderbird"]         $ws9
+#assign [class="Slack"]			$ws1
+assign [class="Spotify"]		$ws8
+assign [class="obsidian"]		$ws3
+# assign [class="TelegramDesktop"]	$ws8
+# assign [class="[Tt]hunderbird"]	$ws9
 
 #-------------------------------------------------------------------
 # Automatically putting workspaces on specific screens 
@@ -224,16 +224,16 @@ workspace 10 output "DP-1"
 # Bar
 #-------------------------------------------------------------------
 bar {
-	# font pango:Inconsolata for Powerline 11
-  font pango: Hack Nerd Font Regular 10
-  # font pango: JetBrainsMono Nerd Font Regular 10
-  # status_command i3status
-	position top
-	# status_command i3blocks
-  status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m spotify cpu memory disk battery pulseout datetime dunstctl \
-  	-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
-  	-t gruvbox-powerline
+    # font pango:Inconsolata for Powerline 11
+    font pango: Hack Nerd Font Regular 10
+    # font pango: JetBrainsMono Nerd Font Regular 10
+    # status_command i3status
+    position top
+    # status_command i3blocks
+    status_command ~/.config/i3/bumblebee-status/bumblebee-status \
+		   -m spotify cpu memory disk battery pulseout datetime dunstctl \
+  		   -p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
+  		   -t onedark-powerline
 
    tray_output HDMI-1
 
