@@ -122,13 +122,11 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
-  vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   docker        # Docker section
   aws           # Amazon Web Services section
   venv          # virtualenv section
-  pyenv         # Pyenv section
   exec_time     # Execution time
   line_sep      # Line break
   char          # Prompt character

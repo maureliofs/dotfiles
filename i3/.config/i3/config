@@ -6,8 +6,8 @@ font pango:Inconsolata for Powerline 11
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86MonBrightnessUp exec --no-startup-id  brightnessctl s +15% # increase screen brightness
@@ -231,7 +231,7 @@ bar {
 	position top
 	# status_command i3blocks
   status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m spotify cpu memory disk battery amixer datetime dunstctl \
+		-m spotify cpu memory disk battery pulseout datetime dunstctl \
   	-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
   	-t gruvbox-powerline
 
@@ -262,8 +262,8 @@ client.focused #ffffff #333333 #ffffff #A6BF7F #ffffff
 #-------------------------------------------------------------------
 # Gaps
 #-------------------------------------------------------------------
-# gaps inner 8
-# gaps outer 1
+gaps inner 8
+gaps outer 1
 
 
 focus_follows_mouse yes
@@ -284,7 +284,7 @@ exec_always --no-startup-id picom -f -i 1 -c & # Ativar transparência
 #exec --no-startup-id /usr/bin/dunst & # Ativar daemon de notificacoes dunst
 # exec_always --no-startup-id ~/.dropbox-dist/dropboxd &
 exec_always --no-startup-id i3-workspace-names-daemon
-exec_always --no-startup-id xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
+# exec_always --no-startup-id xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
 # exec_always "setxkbmap -model pc104 -layout us_intl,br -variant ,, -option grp:alt_shift_toggle"
 # exec_always --no-startup-id autotiling
