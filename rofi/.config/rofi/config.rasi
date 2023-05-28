@@ -1,9 +1,9 @@
 configuration {
 	modi: "window,drun,ssh,run,combi";
 	terminal: "alacritty";
-	font: "Inconsolata for Powerline 12";
+	font: "JetBrainsMono Nerd Font 12";
  	combi-modi: "window,drun,ssh";
 	icon-theme: "Papirus";
 	show-icons: true;
 }
-@theme "/home/marco/.config/rofi/themes/squared-everforest.rasi"
+@theme "/home/marco/.config/rofi/themes/Arc-Dark.rasi"

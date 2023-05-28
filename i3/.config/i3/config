@@ -1,13 +1,13 @@
 set $mod Mod4
 
 # font pango:monospace 10
-# font pango:Font Awesome 11
-font pango:Inconsolata for Powerline 11
+font pango:JetBrainsMono Nerd Font 11
+# font pango:Inconsolata for Powerline 11
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86MonBrightnessUp exec --no-startup-id  brightnessctl s +15% # increase screen brightness
@@ -15,7 +15,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 15%- # decrea
 
 # Multimedia keys
 bindsym XF86Tools exec firefox
-bindsym XF86HomePage exec nautilus
+bindsym XF86HomePage exec nemo
 bindsym XF86Explorer exec alacritty -e ranger
 bindsym XF86Calculator exec gnome-calculator
 
@@ -173,7 +173,7 @@ bindsym $mod+Shift+p exec /home/marco/.config/i3blocks/shutdown_menu/shutdown_me
 bindsym $mod+d exec --no-startup-id "rofi -show drun"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show find -modi find:~/.config/rofi/rofi-scripts/rofi-finder/finder.sh" 
 # bindsym $mod+e exec thunar
-bindsym $mod+e exec nautilus
+bindsym $mod+e exec nemo
 bindsym $mod+Shift+Return exec brave-browser
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec xfce4-notifyd-config
@@ -187,6 +187,7 @@ bindsym $mod+s exec bash ~/.config/rofi/rofi-locate.sh
 bindsym $mod+Shift+m move workspace to output next
 bindsym $mod+p exec evince
 bindsym $mod+b [class="ttrm"] scratchpad show; move position center
+bindsym $mod+u exec autorandr -c
 
 #-------------------------------------------------------------------
 # Floating Windows
@@ -220,6 +221,28 @@ workspace 8 output "DP-1"
 workspace 9 output "DP-1"
 workspace 10 output "DP-1"
 
+
+
+#-------------------------------------------------------------------
+# one dark colors
+#-------------------------------------------------------------------
+set $base00 #282c34
+set $base01 #353b45
+set $base02 #3e4451
+set $base03 #545862
+set $base04 #565c64
+set $base05 #abb2bf
+set $base06 #b6bdca
+set $base07 #c8ccd4
+set $base08 #e06c75
+set $base09 #d19a66
+set $base0A #e5c07b
+set $base0B #98c379
+set $base0C #56b6c2
+set $base0D #61afef
+set $base0E #c678dd
+set $base0F #be5046
+
 #-------------------------------------------------------------------
 # Bar
 #-------------------------------------------------------------------
@@ -233,20 +256,34 @@ bar {
   status_command ~/.config/i3/bumblebee-status/bumblebee-status \
 		-m spotify cpu memory disk battery amixer datetime dunstctl \
   	-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
-  	-t gruvbox-powerline
+  	-t onedark-powerline
 
    tray_output HDMI-1
 
-	colors {
-		background #181818
-		statusline #ffffff
-		separator #555555
+#	colors {
+#		background #181818
+#		statusline #ffffff
+#		separator #555555
+#
+#		focused_workspace #333333 #333333 #ffffff
+#		active_workspace #333333 #333333 #ffffff
+#		inactive_workspace #181818 #181818 #ffffff
+#		urgent_workspace #2f343f #d14343 #2f343f
+#	}
 
-		focused_workspace #333333 #333333 #ffffff
-		active_workspace #333333 #333333 #ffffff
-		inactive_workspace #181818 #181818 #ffffff
-		urgent_workspace #2f343f #d14343 #2f343f
-	}	
+colors {
+    background $base00
+    separator  $base01
+    statusline $base04
+
+    # State             Border  BG      Text
+    focused_workspace   $base05 $base0D $base00
+    active_workspace    $base05 $base03 $base00
+    inactive_workspace  $base03 $base01 $base05
+    urgent_workspace    $base08 $base08 $base00
+    binding_mode        $base00 $base0A $base00
+    }
+
 }
 
 
@@ -255,9 +292,17 @@ bar {
 #-------------------------------------------------------------------
 for_window [class=".*"] border pixel 1
 new_window 1pixel
-# client.focused #ffffff #333333 #ffffff #2986cc #ffffff
-client.focused #ffffff #333333 #ffffff #A6BF7F #ffffff
 
+# client.focused #ffffff #333333 #ffffff #2986cc #ffffff
+# client.focused #ffffff #333333 #ffffff #A6BF7F #ffffff
+
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base08 $base0C
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
 
 #-------------------------------------------------------------------
 # Gaps
@@ -281,10 +326,11 @@ exec_always --no-startup-id picom -f -i 1 -c & # Ativar transparência
 # exec --no-startup-id picom -f --xrender-fence
 # exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
 # exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
-#exec --no-startup-id /usr/bin/dunst & # Ativar daemon de notificacoes dunst
+# exec --no-startup-id /usr/bin/dunst & # Ativar daemon de notificacoes dunst
 # exec_always --no-startup-id ~/.dropbox-dist/dropboxd &
 exec_always --no-startup-id i3-workspace-names-daemon
-exec_always --no-startup-id xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
+# exec_always --no-startup-id xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "DELL0957:00 06CB:CDD6 Touchpad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
 # exec_always "setxkbmap -model pc104 -layout us_intl,br -variant ,, -option grp:alt_shift_toggle"
 # exec_always --no-startup-id autotiling
