@@ -174,7 +174,7 @@ bindsym $mod+d exec --no-startup-id "rofi -show drun"
 bindsym $mod+Shift+d exec --no-startup-id "rofi -show find -modi find:~/.config/rofi/rofi-scripts/rofi-finder/finder.sh" 
 # bindsym $mod+e exec thunar
 bindsym $mod+e exec nemo
-bindsym $mod+Shift+Return exec brave-browser
+bindsym $mod+Shift+Return exec brave
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec xfce4-notifyd-config
 bindsym $mod+F4 exec authy
@@ -254,7 +254,7 @@ bar {
 	position top
 	# status_command i3blocks
   status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m spotify cpu memory disk battery amixer datetime dunstctl \
+		-m spotify cpu memory disk battery pulseout datetime dunstctl \
   	-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
   	-t onedark-powerline
 
@@ -307,8 +307,8 @@ client.background       $base07
 #-------------------------------------------------------------------
 # Gaps
 #-------------------------------------------------------------------
-# gaps inner 8
-# gaps outer 1
+gaps inner 8
+gaps outer 1
 
 
 focus_follows_mouse yes
@@ -335,3 +335,4 @@ exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
 # exec_always "setxkbmap -model pc104 -layout us_intl,br -variant ,, -option grp:alt_shift_toggle"
 # exec_always --no-startup-id autotiling
 exec_always --no-startup-id alacritty --class ttrm,ttrm
+exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
