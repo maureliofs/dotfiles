@@ -116,9 +116,9 @@ typeset -A menu
 menu=(
   [Shutdown]="systemctl poweroff"
   [Reboot]="systemctl reboot"
-  [Hibernate]="systemctl hibernate"
-  [Suspend]="systemctl suspend"
-  [Halt]="systemctl halt"
+  # [Hibernate]="systemctl hibernate"
+  # [Suspend]="systemctl suspend"
+  # [Halt]="systemctl halt"
   [Lock]="${LOCKSCRIPT:-i3lock --color=${BG_COLOR#"#"}}"
   [Logout]="i3-msg exit"
   [Cancel]=""
