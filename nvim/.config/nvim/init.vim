@@ -36,6 +36,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'sainnhe/everforest'
 Plug 'navarasu/onedark.nvim'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 
 set background=dark
@@ -45,4 +46,8 @@ let g:airline_theme='onedark'
 let g:onedark_config = {
       \'style': 'darker',
 \}
+
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
+let g:Hexokinase_highlighters = [ 'backgroundfull' ]
+
 colorscheme onedark
