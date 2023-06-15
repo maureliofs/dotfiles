@@ -18,6 +18,7 @@ declare -a options=(
 "i3-icons - $HOME/.config/i3/app-icons.json"
 "aliases - $HOME/.aliases"
 "zsh - $HOME/.zshrc"
+"nvim - $HOME/.config/nvim/init.vim"
 "vim - $HOME/.vimrc"
 "dunst - $HOME/.config/dunst/dunstrc"
 "picom - $HOME/.config/picom/picom.conf"
