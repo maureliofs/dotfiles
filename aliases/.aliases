@@ -2,3 +2,4 @@ alias i3_config='nvim ~/.config/i3/config'
 alias upd='sudo pacman -Syu'
 alias ncspot='flatpak run io.github.hrkfdn.ncspot'
 alias vi=nvim
+alias dotfiles_update='git add . && git commit -m "update configs" && git push origin personal'
