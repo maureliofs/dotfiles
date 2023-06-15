@@ -1,4 +1,5 @@
-window_opacity: 0.8
+window:
+  opacity: 0.9
 
 font:
   normal:
@@ -16,6 +17,9 @@ cursor:
   blink_interval: 500
   unfocused_hollow: true
   thickness: 0.15
+
+env:
+  TERM: xterm-256color
 
 schemes:
   everforest_dark_hard: &everforest_dark_hard

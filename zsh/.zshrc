@@ -168,3 +168,4 @@ export NVM_DIR="$HOME/.nvm"
 # https://github.com/lsd-rs/lsd
 command -v lsd> /dev/null && alias ls='lsd --group-dirs first' && \
   alias tree='lsd --tree'
+source /usr/share/nvm/init-nvm.sh

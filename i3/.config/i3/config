@@ -6,8 +6,8 @@ font pango:JetBrainsMono Nerd Font 11
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86MonBrightnessUp exec --no-startup-id  brightnessctl s +15% # increase screen brightness
@@ -132,6 +132,43 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+minus move container to workspace number $ws11
 bindsym $mod+Shift+equal move container to workspace number $ws12
 
+# Automatically put the determined application to specific workspace 
+# assign [class="[cC]ode"] 		$ws3
+# assign [class="[nN]emo"] 		$ws4
+# assign [class="Slack"] 		$ws7
+assign [class="obsidian"]   		$ws8
+assign [class="discord"]		$ws11
+assign [class="Spotify"]		$ws12
+# assign [class="TelegramDesktop"]      $ws8
+# assign [class="[Tt]hunderbird"]       $ws9
+
+# Automatically putting workspaces on specific screens 
+workspace 1 output "HDMI-1"
+workspace 2 output "HDMI-1"
+workspace 3 output "HDMI-1"
+workspace 4 output "HDMI-1"
+workspace 5 output "HDMI-1"
+workspace 6 output "HDMI-1"
+workspace 7 output "DP-1"
+workspace 8 output "DP-1"
+workspace 9 output "DP-1"
+workspace 10 output "DP-1"
+workspace 11 output "DP-1"
+workspace 12 output "DP-1"
+
+#-------------------------------------------------------------------
+# Floating Windows
+#-------------------------------------------------------------------
+for_window [class="[Gg]alculator"] floating enable
+for_window [class="[Ll]xappearance"] floating enable
+for_window [class="[Nn]itrogen"] floating enable
+for_window [class="[Pp]avucontrol"] floating enable
+for_window [class="[Aa]randr"] floating enable
+for_window [class="[Gg]nome-calculator"] floating enable
+for_window [class="[Gg]nome-calendar"] floating enable
+for_window [class="ttrm"] move scratchpad
+
+
 #-------------------------------------------------------------------
 # Resize Window
 #-------------------------------------------------------------------
@@ -179,49 +216,18 @@ bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec xfce4-notifyd-config
 bindsym $mod+F4 exec authy
 # bindsym $mod+F11 exec alacritty -e ranger
-bindsym $mod+L exec --no-startup-id i3lock-fancy & sleep 5 && xset dpms force off
+bindsym $mod+L exec --no-startup-id betterlockscreen -l dim & sleep 3 && xset dpms force off
 bindsym Print exec flameshot gui
 # bindsym $mod+c exec flatpak run com.discordapp.Discord
 bindsym $mod+c exec flatpak run com.slack.Slack
-bindsym $mod+s exec bash ~/.config/rofi/rofi-locate.sh
+bindsym $mod+s exec bash ~/.config/rofi/scripts/rofi-locate.sh
+bindsym $mod+o exec bash ~/.config/rofi/scripts/rofi-config-file.sh
 bindsym $mod+Shift+m move workspace to output next
 bindsym $mod+p exec evince
 bindsym $mod+b [class="ttrm"] scratchpad show; move position center
 bindsym $mod+u exec autorandr -c
-
-#-------------------------------------------------------------------
-# Floating Windows
-#-------------------------------------------------------------------
-for_window [class="[Gg]alculator"] floating enable
-for_window [class="[Ll]xappearance"] floating enable
-for_window [class="[Nn]itrogen"] floating enable
-for_window [class="[Pp]avucontrol"] floating enable
-for_window [class="[Aa]randr"] floating enable
-for_window [class="[Gg]nome-calculator"] floating enable
-for_window [class="[Gg]nome-calendar"] floating enable
-for_window [class="ttrm"] move scratchpad
-
-#-------------------------------------------------------------------
-# Atribuir determinado programa a um workspace especifico
-#-------------------------------------------------------------------
-#assign [class="Slack"] 										$ws1
-assign [class="Spotify"] 									$ws8
-assign [class="obsidian"]   							$ws3
-# assign [class="TelegramDesktop"]        $ws8
-# assign [class="[Tt]hunderbird"]         $ws9
-
-#-------------------------------------------------------------------
-# Automatically putting workspaces on specific screens 
-#-------------------------------------------------------------------
-workspace 1 output "eDP-1"
-workspace 2 output "HDMI-1"
-workspace 3 output "DP-1"
-workspace 4 output "HDMI-1"
-workspace 8 output "DP-1"
-workspace 9 output "DP-1"
-workspace 10 output "DP-1"
-
-
+bindsym $mod+n exec dunstctl history-pop
+bindsym $mod+Shift+n exec dunstctl close-all
 
 #-------------------------------------------------------------------
 # one dark colors
@@ -248,17 +254,17 @@ set $base0F #be5046
 #-------------------------------------------------------------------
 bar {
 	# font pango:Inconsolata for Powerline 11
-  font pango: Hack Nerd Font Regular 10
-  # font pango: JetBrainsMono Nerd Font Regular 10
-  # status_command i3status
+	font pango: Hack Nerd Font Regular 10
+	# font pango: JetBrainsMono Nerd Font Regular 10
+	# status_command i3status
 	position top
 	# status_command i3blocks
-  status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m spotify cpu memory disk battery pulseout datetime dunstctl \
-  	-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
-  	-t onedark-powerline
+  	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
+		-m spotify arch-update cpu memory disk battery pulseout datetime dunstctl \
+  		-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
+  		-t onedark-powerline
 
-   tray_output HDMI-1
+   	tray_output HDMI-1
 
 #	colors {
 #		background #181818
@@ -271,18 +277,18 @@ bar {
 #		urgent_workspace #2f343f #d14343 #2f343f
 #	}
 
-colors {
-    background $base00
-    separator  $base01
-    statusline $base04
+	colors {
+	    background $base00
+	    separator  $base01
+	    statusline $base04
 
-    # State             Border  BG      Text
-    focused_workspace   $base05 $base0D $base00
-    active_workspace    $base05 $base03 $base00
-    inactive_workspace  $base03 $base01 $base05
-    urgent_workspace    $base08 $base08 $base00
-    binding_mode        $base00 $base0A $base00
-    }
+	    # State             Border  BG      Text
+	    focused_workspace   $base05 $base0D $base00
+	    active_workspace    $base05 $base03 $base00
+	    inactive_workspace  $base03 $base01 $base05
+	    urgent_workspace    $base08 $base08 $base00
+	    binding_mode        $base00 $base0A $base00
+	}
 
 }
 
