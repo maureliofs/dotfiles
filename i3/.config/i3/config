@@ -27,6 +27,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+focus_follows_mouse yes
 
 # -------------------------------------------------------------------
 # Atalhos
@@ -132,7 +133,9 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+minus move container to workspace number $ws11
 bindsym $mod+Shift+equal move container to workspace number $ws12
 
+#-------------------------------------------------------------------
 # Automatically put the determined application to specific workspace 
+#-------------------------------------------------------------------
 # assign [class="[cC]ode"] 		$ws3
 # assign [class="[nN]emo"] 		$ws4
 # assign [class="Slack"] 		$ws7
@@ -142,19 +145,24 @@ assign [class="Spotify"]		$ws12
 # assign [class="TelegramDesktop"]      $ws8
 # assign [class="[Tt]hunderbird"]       $ws9
 
+#-------------------------------------------------------------------
 # Automatically putting workspaces on specific screens 
-workspace 1 output "HDMI-1"
-workspace 2 output "HDMI-1"
-workspace 3 output "HDMI-1"
-workspace 4 output "HDMI-1"
-workspace 5 output "HDMI-1"
-workspace 6 output "HDMI-1"
-workspace 7 output "DP-1"
-workspace 8 output "DP-1"
-workspace 9 output "DP-1"
-workspace 10 output "DP-1"
-workspace 11 output "DP-1"
-workspace 12 output "DP-1"
+#-------------------------------------------------------------------
+set $lm HDMI-1
+set $rm DP-1
+
+workspace 1 output $lm  
+workspace 2 output $lm 
+workspace 3 output $lm  
+workspace 4 output $lm  
+workspace 5 output $lm  
+workspace 6 output $lm  
+workspace 7 output $rm
+workspace 8 output $rm
+workspace 9 output $rm
+workspace 10 output $rm
+workspace 11 output $rm
+workspace 12 output $rm
 
 #-------------------------------------------------------------------
 # Floating Windows
@@ -166,8 +174,14 @@ for_window [class="[Pp]avucontrol"] floating enable
 for_window [class="[Aa]randr"] floating enable
 for_window [class="[Gg]nome-calculator"] floating enable
 for_window [class="[Gg]nome-calendar"] floating enable
+for_window [class="Yad" title="yad-calendar"] floating enable
 for_window [class="ttrm"] move scratchpad
 
+for_window [class="Spotify"] focus 
+for_window [class="obsidian"] focus 
+for_window [class="[Dd]iscord"] focus
+for_window [class="[Ss]lack"] focus
+for_window [urgent=latest] focus
 
 #-------------------------------------------------------------------
 # Resize Window
@@ -262,7 +276,10 @@ bar {
   	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
 		-m spotify arch-update cpu memory disk battery pulseout datetime dunstctl \
   		-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
-  		-t onedark-powerline
+                datetime.left-click="$HOME/.config/i3/show-calendar.sh" \
+                pulseout.right-click="pavucontrol" \
+                arch-update.left-click="alacritty -e sudo pacman -Syu" \
+  		-t zengarden_onedark
 
    	tray_output HDMI-1
 
@@ -316,16 +333,13 @@ client.background       $base07
 gaps inner 8
 gaps outer 1
 
-
-focus_follows_mouse yes
-
-
 #-------------------------------------------------------------------
 # Exec Start
 #-------------------------------------------------------------------
 exec --no-startup-id xset b off & # desliga o bip do terminal
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork # Ativar bloqueio de tela
 exec --no-startup-id nm-applet # Ativar icone de rede na system tray
+exec --no-startup-id bash ~/.screenlayout/default.sh 
 exec_always --no-startup-id nitrogen --restore # Restaurar wallpaper
 exec_always --no-startup-id numlockx on # Ativar numlock automaticamente
 exec_always --no-startup-id picom -f -i 1 -c & # Ativar transparência

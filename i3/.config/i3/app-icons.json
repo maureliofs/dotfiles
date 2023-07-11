@@ -36,6 +36,7 @@
   "Io.elementary.appcenter": "tags",
   "gnome-system-monitor": "desktop",
   "Gnome-calendar": "calendar",
+  "Yad": "calendar",
   "Bitwarden": "lock",
   "slack": "slack",
   "_no_match": ""
