@@ -235,6 +235,17 @@ workspace 10 output $rm
 workspace 11 output $rm
 workspace 12 output $rm
 
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $lightgray #bdae93
+
 #-------------------------------------------------------------------
 # Bar
 #-------------------------------------------------------------------
@@ -248,20 +259,32 @@ bar {
     status_command ~/.config/i3/bumblebee-status/bumblebee-status \
 		   -m spotify cpu memory disk battery pulseout datetime dunstctl \
   		   -p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
-  		   -t onedark-powerline
+  		   -t gruvbox-powerline
 
    tray_output HDMI-1
 
-	colors {
-		background #181818
-		statusline #ffffff
-		separator #555555
+# 	colors {
+# 		background #181818
+#		statusline #ffffff
+#		separator #555555
 
-		focused_workspace #333333 #333333 #ffffff
-		active_workspace #333333 #333333 #ffffff
-		inactive_workspace #181818 #181818 #ffffff
-		urgent_workspace #2f343f #d14343 #2f343f
-	}	
+#		focused_workspace #333333 #333333 #ffffff
+#		active_workspace #333333 #333333 #ffffff
+#		inactive_workspace #181818 #181818 #ffffff
+#		urgent_workspace #2f343f #d14343 #2f343f
+#	}
+        colors {
+          # bar background color
+          background $bg
+          # text color used for blocks that do not have a color specified.
+          statusline $lightgray
+          # workspaces section            
+          #                    border  backgr. text
+          focused_workspace    $lightgray $lightgray $bg
+          inactive_workspace   $darkgray $darkgray $lightgray
+          active_workspace     $darkgray $darkgray $lightgray
+          urgent_workspace     $red $red $bg
+        }
 }
 
 
@@ -272,8 +295,11 @@ for_window [class=".*"] border pixel 1
 new_window 1pixel
 # client.focused #ffffff #333333 #ffffff #2986cc #ffffff
 # client.focused #ffffff #333333 #ffffff #A6BF7F #ffffff
-client.focused #ffffff #333333 #ffffff #9A52AF #ffffff
-
+# client.focused #ffffff #333333 #ffffff #9A52AF #ffffff
+client.focused          $lightgray $lightgray $bg $purple $darkgray
+client.focused_inactive $darkgray $darkgray $lightgray $purple $darkgray
+client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
+client.urgent           $red $red $white $red $red
 
 #-------------------------------------------------------------------
 # Gaps
