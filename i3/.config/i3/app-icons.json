@@ -29,6 +29,7 @@
   "code": "code",
   "Geany": "code",
   "Evince": "file-pdf",
+  "Atril": "file-pdf",
   "eog": "image",
   "Nitrogen": "image",
   "Arandr": "desktop",
@@ -39,5 +40,10 @@
   "Yad": "calendar",
   "Bitwarden": "lock",
   "slack": "slack",
+  "Zoom": "video",
+  "VirtualBox Manager": "desktop",
+  "VirtualBox Machine": "desktop",
+  "Authy Desktop": "key",
+  "authy desktop": "key",
   "_no_match": ""
 }

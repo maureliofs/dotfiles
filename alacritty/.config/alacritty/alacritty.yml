@@ -1,5 +1,5 @@
 window:
-  opacity: 0.9
+  opacity: 1
 
 font:
   normal:
@@ -21,6 +21,8 @@ cursor:
 env:
   TERM: xterm-256color
 
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
 schemes:
   everforest_dark_hard: &everforest_dark_hard
     primary:
@@ -190,4 +192,5 @@ schemes:
       white:   '0x828791'
 
 # Apply
-colors: *one_dark
+#colors: *one_dark
+

@@ -175,6 +175,8 @@ for_window [class="[Aa]randr"] floating enable
 for_window [class="[Gg]nome-calculator"] floating enable
 for_window [class="[Gg]nome-calendar"] floating enable
 for_window [class="Yad" title="yad-calendar"] floating enable
+for_window [class="copyq"] floating enable
+
 for_window [class="ttrm"] move scratchpad
 
 for_window [class="Spotify"] focus 
@@ -237,11 +239,12 @@ bindsym $mod+c exec flatpak run com.slack.Slack
 bindsym $mod+s exec bash ~/.config/rofi/scripts/rofi-locate.sh
 bindsym $mod+o exec bash ~/.config/rofi/scripts/rofi-config-file.sh
 bindsym $mod+Shift+m move workspace to output next
-bindsym $mod+p exec evince
+bindsym $mod+p exec atril 
 bindsym $mod+b [class="ttrm"] scratchpad show; move position center
 bindsym $mod+u exec autorandr -c
 bindsym $mod+n exec dunstctl history-pop
 bindsym $mod+Shift+n exec dunstctl close-all
+bindsym $mod+x exec clipmenu 
 
 #-------------------------------------------------------------------
 # one dark colors
@@ -262,6 +265,32 @@ set $base0C #56b6c2
 set $base0D #61afef
 set $base0E #c678dd
 set $base0F #be5046
+
+set $rosewater #f4dbd6
+set $flamingo  #f0c6c6
+set $pink      #f5bde6
+set $mauve     #c6a0f6
+set $red       #ed8796
+set $maroon    #ee99a0
+set $peach     #f5a97f
+set $green     #a6da95
+set $teal      #8bd5ca
+set $sky       #91d7e3
+set $sapphire  #7dc4e4
+set $blue      #8aadf4
+set $lavender  #b7bdf8
+set $text      #cad3f5
+set $subtext1  #b8c0e0
+set $subtext0  #a5adcb
+set $overlay2  #939ab7
+set $overlay1  #8087a2
+set $overlay0  #6e738d
+set $surface2  #5b6078
+set $surface1  #494d64
+set $surface0  #363a4f
+set $base      #24273a
+set $mantle    #1e2030
+set $crust     #181926
 
 #-------------------------------------------------------------------
 # Bar
@@ -300,7 +329,7 @@ bar {
 	    statusline $base04
 
 	    # State             Border  BG      Text
-	    focused_workspace   $base05 $base0D $base00
+	    focused_workspace   $base05 $sapphire $base00
 	    active_workspace    $base05 $base03 $base00
 	    inactive_workspace  $base03 $base01 $base05
 	    urgent_workspace    $base08 $base08 $base00
@@ -326,6 +355,15 @@ client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
+
+
+# target                 title     bg    text   indicator  border
+client.focused           $pink     $base $text  $rosewater $pink
+client.focused_inactive  $mauve    $base $text  $rosewater $overlay2
+client.unfocused         $mauve    $base $text  $rosewater $overlay2
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 #-------------------------------------------------------------------
 # Gaps
@@ -356,3 +394,6 @@ exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
 # exec_always --no-startup-id autotiling
 exec_always --no-startup-id alacritty --class ttrm,ttrm
 exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
+exec_always copyq &
+exec_always clipmenud &
+

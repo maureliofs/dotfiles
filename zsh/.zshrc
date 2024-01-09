@@ -79,13 +79,13 @@ ZSH_THEME="spaceship"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
 	sudo
-	dnf
 	zsh-syntax-highlighting
 	zsh-autosuggestions
-	ubuntu
         docker
         ansible
+        aws
         kubectl
+        kube-ps1
         systemd
         terraform
         )
@@ -122,13 +122,15 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
+#  vi_mode       # Vi-mode indicator
+#  jobs          # Background jobs indicator
   exit_code     # Exit code section
-  docker        # Docker section
+#  docker        # Docker section
   aws           # Amazon Web Services section
+#  kubectl
   venv          # virtualenv section
   pyenv         # Pyenv section
+  terraform
   exec_time     # Execution time
   line_sep      # Line break
   char          # Prompt character
@@ -145,6 +147,15 @@ SPACESHIP_DIR_SUFFIX="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"
 SPACESHIP_DIR_TRUNC=0
 SPACESHIP_DIR_COLOR="cyan"
 
+SPACESHIP_AWS_SYMBOL=" "
+
+SPACESHIP_TERRAFORM_SHOW=true
+SPACESHIP_TERRAFORM_SYMBOL="󱁢 "
+
+SPACESHIP_KUBECTL_SHOW=true
+
+SPACESHIP_KUBECTL_CONTEXT_SHOW=true
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #fpath+=$HOME/.zsh/pure
@@ -153,7 +164,7 @@ SPACESHIP_DIR_COLOR="cyan"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-#source <(kubectl completion zsh)
+source <(kubectl completion zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -169,3 +180,16 @@ export NVM_DIR="$HOME/.nvm"
 command -v lsd> /dev/null && alias ls='lsd --group-dirs first' && \
   alias tree='lsd --tree'
 source /usr/share/nvm/init-nvm.sh
+
+# PROMPT='$(kube_ps1)'$PROMPT
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/marco/google-cloud-sdk/path.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/marco/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/completion.zsh.inc'; fi
+
+PATH=$PATH:$HOME/go/bin
+
+source '/opt/kube-ps1/kube-ps1.sh'
+PROMPT='$(kube_ps1) '$PROMPT

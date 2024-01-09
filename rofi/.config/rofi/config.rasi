@@ -6,4 +6,4 @@ configuration {
 	icon-theme: "Papirus";
 	show-icons: true;
 }
-@theme "/home/marco/.config/rofi/themes/onedark.rasi"
+@theme "/home/marco/.config/rofi/themes/catppuccin-macchiato.rasi"

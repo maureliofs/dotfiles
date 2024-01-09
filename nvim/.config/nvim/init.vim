@@ -36,21 +36,28 @@ Plug 'vim-airline/vim-airline'
 Plug 'sainnhe/everforest'
 Plug 'navarasu/onedark.nvim'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 call plug#end()
 
 set background=dark
 
-let g:airline_theme='onedark'
+" let g:airline_theme='onedark'
 
-let g:onedark_config = {
-      \'style': 'darker',
-\}
+" let g:onedark_config = {
+"       \'style': 'darker',
+" \}
 
-let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
-let g:Hexokinase_highlighters = [ 'backgroundfull' ]
+" let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
+" let g:Hexokinase_highlighters = [ 'backgroundfull' ]
+
+let g:catppuccin_flavour = "macchiato" " latte, frappe, macchiato, mocha
+
+lua << EOF
+require("catppuccin").setup()
+EOF
 
 """"""""""""""""""""""""
 "Colorscheme           "
 """"""""""""""""""""""""
-colorscheme onedark
+colorscheme catppuccin

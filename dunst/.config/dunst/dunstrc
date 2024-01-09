@@ -29,7 +29,8 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "350x7-13+32"
+    # geometry = "350x20-13+100"
+    geometry = "400x20-40-40"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -235,23 +236,39 @@
     history = ctrl+mod1+h
 
 
+#[urgency_low]
+#    msg_urgency = low
+#	background = "#353b45"
+ #   foreground = "#545862"
+#	timeout= 4 
+
+#[urgency_normal]
+#	msg_urgency = normal
+#	background = "#3e4451"
+#    foreground = "#abb2bf"
+#	timeout = 4 
+
+#[urgency_critical]
+#	msg_urgency = critical
+#	background = "#e06c75"
+#    foreground = "#b6bdca"
+#	timeout = 0 
+
+# frame_color = "#8AADF4"
+# separator_color= frame
+
 [urgency_low]
-    msg_urgency = low
-	background = "#353b45"
-    foreground = "#545862"
-	timeout= 4 
+background = "#24273A"
+foreground = "#CAD3F5"
 
 [urgency_normal]
-	msg_urgency = normal
-	background = "#3e4451"
-    foreground = "#abb2bf"
-	timeout = 4 
+background = "#24273A"
+foreground = "#CAD3F5"
 
 [urgency_critical]
-	msg_urgency = critical
-	background = "#e06c75"
-    foreground = "#b6bdca"
-	timeout = 0 
+background = "#24273A"
+foreground = "#CAD3F5"
+frame_color = "#F5A97F"
 
 
 # Every section that isn't one of the above is interpreted as a rules to
