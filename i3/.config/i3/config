@@ -235,7 +235,8 @@ bindsym $mod+F4 exec authy
 bindsym $mod+L exec --no-startup-id betterlockscreen -l dim & sleep 3 && xset dpms force off
 bindsym Print exec flameshot gui
 # bindsym $mod+c exec flatpak run com.discordapp.Discord
-bindsym $mod+c exec flatpak run com.slack.Slack
+# bindsym $mod+c exec flatpak run com.slack.Slack
+bindsym $mod+c exec slack
 bindsym $mod+s exec bash ~/.config/rofi/scripts/rofi-locate.sh
 bindsym $mod+o exec bash ~/.config/rofi/scripts/rofi-config-file.sh
 bindsym $mod+Shift+m move workspace to output next
@@ -292,6 +293,40 @@ set $base      #24273a
 set $mantle    #1e2030
 set $crust     #181926
 
+#######
+#THEME#
+#######
+
+# set primary gruvbox colorscheme colors
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $green_alt #B8BB26
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+
+# rose-pine 
+
+set $base           #191724
+set $surface        #1f1d2e
+set $overlay        #26233a
+set $muted          #6e6a86
+set $subtle         #908caa
+set $text           #e0def4
+set $love           #eb6f92
+set $gold           #f6c177
+set $rose           #ebbcba
+set $pine           #31748f
+set $foam           #9ccfd8
+set $iris           #c4a7e7
+set $highlightlow   #21202e
+set $highlightmed   #403d52
+set $highlighthigh  #524f67
+
 #-------------------------------------------------------------------
 # Bar
 #-------------------------------------------------------------------
@@ -303,12 +338,12 @@ bar {
 	position top
 	# status_command i3blocks
   	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m spotify arch-update cpu memory disk battery pulseout datetime dunstctl \
+		-m spotify arch-update cpu memory disk battery amixer datetime dunstctl \
   		-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
                 datetime.left-click="$HOME/.config/i3/show-calendar.sh" \
                 pulseout.right-click="pavucontrol" \
                 arch-update.left-click="alacritty -e sudo pacman -Syu" \
-  		-t zengarden_onedark
+  		-t rose-pine 
 
    	tray_output HDMI-1
 
@@ -323,16 +358,43 @@ bar {
 #		urgent_workspace #2f343f #d14343 #2f343f
 #	}
 
+# 	colors {
+# 	    background $base00
+# 	    separator  $base01
+# 	    statusline $base04
+# 
+# 	    # State             Border  BG      Text
+# 	    focused_workspace   $base05 $sapphire $base00
+# 	    active_workspace    $base05 $base03 $base00
+# 	    inactive_workspace  $base03 $base01 $base05
+# 	    urgent_workspace    $base08 $base08 $base00
+# 	    binding_mode        $base00 $base0A $base00
+# 	}
+
+		#gruvbox
 	colors {
-	    background $base00
+	    background $bg
 	    separator  $base01
-	    statusline $base04
+	    statusline $yellow
 
 	    # State             Border  BG      Text
-	    focused_workspace   $base05 $sapphire $base00
+	    focused_workspace   $green_alt $green_alt $darkgray
 	    active_workspace    $base05 $base03 $base00
-	    inactive_workspace  $base03 $base01 $base05
-	    urgent_workspace    $base08 $base08 $base00
+	    inactive_workspace  $darkgray $darkgray $yellow
+	    urgent_workspace    $red $red $bg
+	    binding_mode        $base00 $base0A $base00
+	}
+
+	colors {
+	    background #393552
+	    separator  #393552
+	    statusline $yellow
+
+	    # State             Border  BG      Text
+	    focused_workspace   #FFFFFF #EA9A97 #000000
+	    active_workspace    #393552 #393552 #FFFFFF
+	    inactive_workspace  #393552 #393552 #FFFFFF
+	    urgent_workspace    $love $love #393552
 	    binding_mode        $base00 $base0A $base00
 	}
 
@@ -349,20 +411,27 @@ new_window 1pixel
 # client.focused #ffffff #333333 #ffffff #A6BF7F #ffffff
 
 # Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D $base00 $base08 $base0C
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+#client.focused          $base05 $base0D $base00 $base08 $base0C
+#client.focused_inactive $base01 $base01 $base05 $base03 $base01
+#client.unfocused        $base01 $base00 $base05 $base01 $base01
+#client.urgent           $base08 $base08 $base00 $base08 $base08
+#client.placeholder      $base00 $base00 $base05 $base00 $base00
+#client.background       $base07
 
 
 # target                 title     bg    text   indicator  border
-client.focused           $pink     $base $text  $rosewater $pink
-client.focused_inactive  $mauve    $base $text  $rosewater $overlay2
-client.unfocused         $mauve    $base $text  $rosewater $overlay2
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+#client.focused           $pink     $base $text  $rosewater $pink
+#client.focused_inactive  $mauve    $base $text  $rosewater $overlay2
+#client.unfocused         $mauve    $base $text  $rosewater $overlay2
+#client.urgent            $peach    $base $peach $overlay0  $peach
+#client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+#client.background        $base
+
+client.focused           $rose     $base $text  $rose      $rose
+client.focused_inactive  $text     $base $text  $subtle    $surface
+client.unfocused         $text     $base $text  $overlay   $overlay
+client.urgent            $text     $base $text  $love      $love
+client.placeholder       $base     $base $text  $overlay   $overlay
 client.background        $base
 
 #-------------------------------------------------------------------

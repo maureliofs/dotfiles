@@ -30,7 +30,7 @@ ZSH_THEME="spaceship"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -59,7 +59,7 @@ ZSH_THEME="spaceship"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+#DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -85,7 +85,7 @@ plugins=(git
         ansible
         aws
         kubectl
-        kube-ps1
+        #kube-ps1
         systemd
         terraform
         )
@@ -115,29 +115,30 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   dir           # Current directory section
   host          # Hostname section
-  git           # Git section (git_branch + git_status)
-#  vi_mode       # Vi-mode indicator
-#  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-#  docker        # Docker section
   aws           # Amazon Web Services section
-#  kubectl
-  venv          # virtualenv section
-  pyenv         # Pyenv section
+  kubectl
   terraform
+  git           # Git section (git_branch + git_status)
+  venv          # virtualenv section
+  exit_code     # Exit code section
   exec_time     # Execution time
   line_sep      # Line break
   char          # Prompt character
 )
+
+#SPACESHIP_RPROMPT_ORDER=(kubectl)
+
 SPACESHIP_USER_SHOW=always
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯"
+SPACESHIP_CHAR_SYMBOL_SUCCESS="❯"
+SPACESHIP_CHAR_SYMBOL_FAILURE="❯"
 # SPACESHIP_CHAR_SYMBOL="➜"
 SPACESHIP_CHAR_SUFFIX=" "
 
@@ -153,8 +154,12 @@ SPACESHIP_TERRAFORM_SHOW=true
 SPACESHIP_TERRAFORM_SYMBOL="󱁢 "
 
 SPACESHIP_KUBECTL_SHOW=true
-
-SPACESHIP_KUBECTL_CONTEXT_SHOW=true
+SPACESHIP_KUBECTL_VERSION_SHOW=false
+SPACESHIP_KUBECONTEXT_SHOW=true
+SPACESHIP_KUBECTL_SYMBOL="󱃾 "
+SPACESHIP_KUBECTL_COLOR="blue"
+SPACESHIP_KUBECTL_CONTEXT_COLOR="blue"
+SPACESHIP_KUBECTL_SUFFIX=""
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -165,31 +170,31 @@ SPACESHIP_KUBECTL_CONTEXT_SHOW=true
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source <(kubectl completion zsh)
-
+source <(flux completion zsh)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source $HOME/.aliases
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+##export NVM_DIR="$HOME/.nvm"
+##[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+##[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # lsd icons terminal
 # https://github.com/lsd-rs/lsd
 command -v lsd> /dev/null && alias ls='lsd --group-dirs first' && \
   alias tree='lsd --tree'
-source /usr/share/nvm/init-nvm.sh
-
-# PROMPT='$(kube_ps1)'$PROMPT
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/marco/google-cloud-sdk/path.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/marco/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/completion.zsh.inc'; fi
+##source /usr/share/nvm/init-nvm.sh
 
 PATH=$PATH:$HOME/go/bin
 
-source '/opt/kube-ps1/kube-ps1.sh'
-PROMPT='$(kube_ps1) '$PROMPT
+export EDITOR=nvim
+eval "$(zoxide init --cmd cd zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/marco/google-cloud-sdk/google-cloud-sdk/path.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/marco/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc'; fi
+
+export NVIM_APPNAME=lazyvim

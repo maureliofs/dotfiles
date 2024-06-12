@@ -1,6 +1,7 @@
-alias i3_config='nvim ~/.config/i3/config'
+alias i3config='nvim ~/.config/i3/config'
 alias upd='sudo pacman -Syu'
 alias vi=nvim
 alias vapor='php ~/.config/composer/vendor/bin/vapor'
 alias cat=bat
 alias kctx=kubectx
+alias lazyvim="NVIM_APPNAME=lazyvim nvim"
