@@ -186,7 +186,7 @@ command -v lsd> /dev/null && alias ls='lsd --group-dirs first' && \
   alias tree='lsd --tree'
 ##source /usr/share/nvm/init-nvm.sh
 
-PATH=$PATH:$HOME/go/bin
+PATH=$PATH:$HOME/go/bin:$HOME/.local/bin/
 
 export EDITOR=nvim
 eval "$(zoxide init --cmd cd zsh)"
@@ -198,3 +198,5 @@ if [ -f '/home/marco/google-cloud-sdk/google-cloud-sdk/path.zsh.inc' ]; then . '
 if [ -f '/home/marco/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc'; fi
 
 export NVIM_APPNAME=lazyvim
+#export TERM=xterm-kitty
+export TERM=xterm-256color

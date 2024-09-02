@@ -34,7 +34,8 @@ focus_follows_mouse yes
 # -------------------------------------------------------------------
 # start a terminal
 # bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty 
 
 # kill focused window
 bindsym $mod+q kill
@@ -104,6 +105,8 @@ set $ws9 "9"
 set $ws10 "10"
 set $ws11 "11"
 set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -118,6 +121,8 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 bindsym $mod+minus workspace number $ws11
 bindsym $mod+equal workspace number $ws12
+bindsym $mod+Control+1 workspace number $ws13
+bindsym $mod+Control+2 workspace number $ws14
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -132,6 +137,8 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+minus move container to workspace number $ws11
 bindsym $mod+Shift+equal move container to workspace number $ws12
+bindsym $mod+Shift+Control+1 move container to workspace number $ws13
+bindsym $mod+Shift+Control+2 move container to workspace number $ws14
 
 #-------------------------------------------------------------------
 # Automatically put the determined application to specific workspace 
@@ -151,12 +158,12 @@ assign [class="Spotify"]		$ws12
 set $lm HDMI-1
 set $rm DP-1
 
-workspace 1 output $lm  
-workspace 2 output $lm 
-workspace 3 output $lm  
-workspace 4 output $lm  
-workspace 5 output $lm  
-workspace 6 output $lm  
+workspace 1 output $lm
+workspace 2 output $lm
+workspace 3 output $lm
+workspace 4 output $lm
+workspace 5 output $lm
+workspace 6 output $lm
 workspace 7 output $rm
 workspace 8 output $rm
 workspace 9 output $rm
@@ -177,7 +184,7 @@ for_window [class="[Gg]nome-calendar"] floating enable
 for_window [class="Yad" title="yad-calendar"] floating enable
 for_window [class="copyq"] floating enable
 
-for_window [class="ttrm"] move scratchpad
+# for_window [class="ttrm"] move scratchpad
 
 for_window [class="Spotify"] focus 
 for_window [class="obsidian"] focus 
@@ -188,21 +195,6 @@ for_window [urgent=latest] focus
 #-------------------------------------------------------------------
 # Resize Window
 #-------------------------------------------------------------------
-
-# mode "resize" {
-#         bindsym Left resize shrink width 10 px or 10 ppt
-#         bindsym Down resize grow height 10 px or 10 ppt
-#         bindsym Up resize shrink height 10 px or 10 ppt
-#         bindsym Right resize grow width 10 px or 10 ppt
-# 
-#         # back to normal: Enter or Escape or $mod+r
-#         bindsym Return mode "default"
-#         bindsym Escape mode "default"
-#         bindsym $mod+r mode "default"
-# }
-# 
-# bindsym $mod+r mode "resize"
-
 bindsym $mod+Control Right  resize  grow     width  5 px or 5 ppt
 bindsym $mod+Control Left   resize  shrink   width  5 px or 5 ppt
 bindsym $mod+Control Up     resize  grow     height 5 px or 5 ppt
@@ -241,164 +233,22 @@ bindsym $mod+s exec bash ~/.config/rofi/scripts/rofi-locate.sh
 bindsym $mod+o exec bash ~/.config/rofi/scripts/rofi-config-file.sh
 bindsym $mod+Shift+m move workspace to output next
 bindsym $mod+p exec atril 
-bindsym $mod+b [class="ttrm"] scratchpad show; move position center
+# bindsym $mod+b [class="ttrm"] scratchpad show; move position center
 bindsym $mod+u exec autorandr -c
 bindsym $mod+n exec dunstctl history-pop
 bindsym $mod+Shift+n exec dunstctl close-all
-bindsym $mod+x exec clipmenu 
+bindsym $mod+x exec clipmenu
+
 
 #-------------------------------------------------------------------
-# one dark colors
+# Theme
 #-------------------------------------------------------------------
-set $base00 #282c34
-set $base01 #353b45
-set $base02 #3e4451
-set $base03 #545862
-set $base04 #565c64
-set $base05 #abb2bf
-set $base06 #b6bdca
-set $base07 #c8ccd4
-set $base08 #e06c75
-set $base09 #d19a66
-set $base0A #e5c07b
-set $base0B #98c379
-set $base0C #56b6c2
-set $base0D #61afef
-set $base0E #c678dd
-set $base0F #be5046
-
-set $rosewater #f4dbd6
-set $flamingo  #f0c6c6
-set $pink      #f5bde6
-set $mauve     #c6a0f6
-set $red       #ed8796
-set $maroon    #ee99a0
-set $peach     #f5a97f
-set $green     #a6da95
-set $teal      #8bd5ca
-set $sky       #91d7e3
-set $sapphire  #7dc4e4
-set $blue      #8aadf4
-set $lavender  #b7bdf8
-set $text      #cad3f5
-set $subtext1  #b8c0e0
-set $subtext0  #a5adcb
-set $overlay2  #939ab7
-set $overlay1  #8087a2
-set $overlay0  #6e738d
-set $surface2  #5b6078
-set $surface1  #494d64
-set $surface0  #363a4f
-set $base      #24273a
-set $mantle    #1e2030
-set $crust     #181926
-
-#######
-#THEME#
-#######
-
-# set primary gruvbox colorscheme colors
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $green_alt #B8BB26
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-
-# rose-pine 
-
-set $base           #191724
-set $surface        #1f1d2e
-set $overlay        #26233a
-set $muted          #6e6a86
-set $subtle         #908caa
-set $text           #e0def4
-set $love           #eb6f92
-set $gold           #f6c177
-set $rose           #ebbcba
-set $pine           #31748f
-set $foam           #9ccfd8
-set $iris           #c4a7e7
-set $highlightlow   #21202e
-set $highlightmed   #403d52
-set $highlighthigh  #524f67
+include ~/.config/i3/colorscheme/catppuccin-frappe.config
 
 #-------------------------------------------------------------------
-# Bar
+# bar
 #-------------------------------------------------------------------
-bar {
-	# font pango:Inconsolata for Powerline 11
-	font pango: Hack Nerd Font Regular 10
-	# font pango: JetBrainsMono Nerd Font Regular 10
-	# status_command i3status
-	position top
-	# status_command i3blocks
-  	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m spotify arch-update cpu memory disk battery amixer datetime dunstctl \
-  		-p disk.path="/home" datetime.format="%d %b %Y, %a %H:%M" \
-                datetime.left-click="$HOME/.config/i3/show-calendar.sh" \
-                pulseout.right-click="pavucontrol" \
-                arch-update.left-click="alacritty -e sudo pacman -Syu" \
-  		-t rose-pine 
-
-   	tray_output HDMI-1
-
-#	colors {
-#		background #181818
-#		statusline #ffffff
-#		separator #555555
-#
-#		focused_workspace #333333 #333333 #ffffff
-#		active_workspace #333333 #333333 #ffffff
-#		inactive_workspace #181818 #181818 #ffffff
-#		urgent_workspace #2f343f #d14343 #2f343f
-#	}
-
-# 	colors {
-# 	    background $base00
-# 	    separator  $base01
-# 	    statusline $base04
-# 
-# 	    # State             Border  BG      Text
-# 	    focused_workspace   $base05 $sapphire $base00
-# 	    active_workspace    $base05 $base03 $base00
-# 	    inactive_workspace  $base03 $base01 $base05
-# 	    urgent_workspace    $base08 $base08 $base00
-# 	    binding_mode        $base00 $base0A $base00
-# 	}
-
-		#gruvbox
-	colors {
-	    background $bg
-	    separator  $base01
-	    statusline $yellow
-
-	    # State             Border  BG      Text
-	    focused_workspace   $green_alt $green_alt $darkgray
-	    active_workspace    $base05 $base03 $base00
-	    inactive_workspace  $darkgray $darkgray $yellow
-	    urgent_workspace    $red $red $bg
-	    binding_mode        $base00 $base0A $base00
-	}
-
-	colors {
-	    background #393552
-	    separator  #393552
-	    statusline $yellow
-
-	    # State             Border  BG      Text
-	    focused_workspace   #FFFFFF #EA9A97 #000000
-	    active_workspace    #393552 #393552 #FFFFFF
-	    inactive_workspace  #393552 #393552 #FFFFFF
-	    urgent_workspace    $love $love #393552
-	    binding_mode        $base00 $base0A $base00
-	}
-
-}
+include ~/.config/i3/bar/catppucin-frappe.config
 
 
 #-------------------------------------------------------------------
@@ -407,32 +257,6 @@ bar {
 for_window [class=".*"] border pixel 1
 new_window 1pixel
 
-# client.focused #ffffff #333333 #ffffff #2986cc #ffffff
-# client.focused #ffffff #333333 #ffffff #A6BF7F #ffffff
-
-# Property Name         Border  BG      Text    Indicator Child Border
-#client.focused          $base05 $base0D $base00 $base08 $base0C
-#client.focused_inactive $base01 $base01 $base05 $base03 $base01
-#client.unfocused        $base01 $base00 $base05 $base01 $base01
-#client.urgent           $base08 $base08 $base00 $base08 $base08
-#client.placeholder      $base00 $base00 $base05 $base00 $base00
-#client.background       $base07
-
-
-# target                 title     bg    text   indicator  border
-#client.focused           $pink     $base $text  $rosewater $pink
-#client.focused_inactive  $mauve    $base $text  $rosewater $overlay2
-#client.unfocused         $mauve    $base $text  $rosewater $overlay2
-#client.urgent            $peach    $base $peach $overlay0  $peach
-#client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-#client.background        $base
-
-client.focused           $rose     $base $text  $rose      $rose
-client.focused_inactive  $text     $base $text  $subtle    $surface
-client.unfocused         $text     $base $text  $overlay   $overlay
-client.urgent            $text     $base $text  $love      $love
-client.placeholder       $base     $base $text  $overlay   $overlay
-client.background        $base
 
 #-------------------------------------------------------------------
 # Gaps
@@ -461,8 +285,7 @@ exec_always --no-startup-id xinput set-prop "DELL0957:00 06CB:CDD6 Touchpad" "li
 exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
 # exec_always "setxkbmap -model pc104 -layout us_intl,br -variant ,, -option grp:alt_shift_toggle"
 # exec_always --no-startup-id autotiling
-exec_always --no-startup-id alacritty --class ttrm,ttrm
+# exec_always --no-startup-id alacritty --class ttrm,ttrm
 exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
 exec_always copyq &
 exec_always clipmenud &
-
