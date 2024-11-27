@@ -1,0 +1,47 @@
+{
+  "icons": [
+    "awesome-fonts"
+  ],
+  "defaults": {
+    "separator-block-width": 0,
+    "separator": "",
+    "warning": {
+      "fg": "#c6c8d1",
+      "bg": "#303446"
+    },
+    "critical": {
+      "fg": "#303446",
+      "bg": "#e78284"
+    },
+    "fg": "#c6c8d1",
+    "bg": "#303446"
+  },
+  "dnf": {
+    "good": {
+      "fg": "#303446",
+      "bg": "#a6d189"
+    }
+  },
+  "apt": {
+    "good": {
+      "fg": "#303446",
+      "bg": "#a6d189"
+    }
+  },
+  "pacman": {
+    "good": {
+      "fg": "#303446",
+      "bg": "#a6d189"
+    }
+  },
+  "battery": {
+    "charged": {
+      "fg": "#a6d189",
+      "bg": "#303446"
+    },
+    "charging": {
+      "fg": "#89b8c2",
+      "bg": "#303446"
+    }
+  }
+}
