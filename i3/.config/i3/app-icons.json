@@ -50,8 +50,5 @@
   "slack": "slack",
   "Zoom": "video",
   "VirtualBox Manager": "desktop",
-  "VirtualBox Machine": "desktop",
-  "Authy Desktop": "key",
-  "authy desktop": "key",
-  "_no_match": ""
+  "VirtualBox Machine": "desktop"
 }
