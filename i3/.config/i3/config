@@ -273,7 +273,7 @@ exec --no-startup-id nm-applet # Ativar icone de rede na system tray
 exec --no-startup-id bash ~/.screenlayout/default.sh 
 exec_always --no-startup-id nitrogen --restore # Restaurar wallpaper
 exec_always --no-startup-id numlockx on # Ativar numlock automaticamente
-exec_always --no-startup-id picom -f -i 1 -c & # Ativar transparência
+exec_always --no-startup-id picom -f -i 1 -c --backend glx & # Ativar transparência
 # exec --no-startup-id picom -f --xrender-fence
 # exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
 # exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
