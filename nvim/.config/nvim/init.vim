@@ -37,9 +37,9 @@ Plug 'sainnhe/everforest'
 Plug 'navarasu/onedark.nvim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'rose-pine/vim'
 call plug#end()
 
+colorscheme onedark 
 set background=dark

@@ -1,0 +1,84 @@
+/* --- Catppuccin Frappé Palette --- */
+@define-color base     #303446;
+@define-color surface  #414559;
+@define-color overlay  #51576d;
+@define-color text     #c6d0f5;
+@define-color subtext  #a5adce;
+@define-color accent   #8caaee;
+@define-color green    #a6d189;
+@define-color red      #e78284;
+@define-color yellow   #e5c890;
+
+* {
+  font-family: 'JetBrainsMono Nerd Font';
+  background-clip: border-box;
+}
+
+.notification-row {
+  outline: none;
+}
+
+.notification-content {
+  background: @surface;
+  color: @text;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  border: 1px solid @overlay;
+}
+
+/* Título da Notificação */
+.summary {
+  font-size: 14px;
+  font-weight: bold;
+  color: @accent;
+}
+
+/* Corpo da Notificação */
+.body {
+  font-size: 13px;
+  color: @text;
+}
+
+/* Painel Central (Control Center) */
+.control-center {
+  background: alpha(@base, 0.9);
+  border: 2px solid @accent;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px;
+  color: @text;
+}
+
+/* Widgets e Botões */
+.widget-title > label {
+  font-size: 18px;
+  color: @accent;
+  margin: 5px;
+}
+
+.widget-buttons-grid > button {
+  background: @surface;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 10px;
+  color: @text;
+}
+
+.widget-buttons-grid > button:hover {
+  background: @overlay;
+  border: 1px solid @accent;
+}
+
+/* Botão de Limpar Tudo */
+.widget-title > button {
+  background: @red;
+  color: @base;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+/* Notificações Críticas (ex: bateria acabando) */
+.critical {
+  border: 2px solid @red;
+}

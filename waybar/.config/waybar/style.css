@@ -1,0 +1,52 @@
+/* IMPORTANTE: Mude esta linha para trocar de tema */
+@import url("./themes/catppuccin-frappe.css");
+
+* {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 13px;
+  border: none;
+  border-radius: 8px;
+}
+
+window#waybar {
+  background: alpha(@base, 0.7);
+  color: @text;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  color: @subtext;
+}
+
+#workspaces button.active {
+  color: @accent;
+}
+
+#mpris {
+  padding: 0 12px;
+  margin: 4px;
+  background: alpha(@surface, 0.6);
+  color: #1DB954; /* Spotify costuma manter o verde original */
+  border-bottom: 2px solid #1DB954;
+}
+
+#clock, #cpu, #memory, #disk {
+  padding: 0 10px;
+  color: @text;
+}
+
+#disk.warning { color: @yellow; }
+#disk.critical { color: @red; }
+
+#temperature, #battery, #network, #pulseaudio, #custom-updates {
+  padding: 0 10px;
+  margin: 4px;
+  background: alpha(@surface, 0.6);
+  color: @text;
+}
+
+/* Exemplo usando a cor do tema para atualizações */
+#custom-updates {
+  background: alpha(@surface, 0.6);
+  color: @yellow;
+}

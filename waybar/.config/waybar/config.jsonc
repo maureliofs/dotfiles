@@ -1,0 +1,174 @@
+{
+    "layer": "top",
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 30,
+    "spacing": 4, // Gaps between modules (4px)
+
+    // Ordem dos módulos
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/mode",
+        "custom/layout"
+    ],
+    "modules-center": [
+        "hyprland/window",
+        "mpris"
+    ],
+    "modules-right": [
+        "custom/updates",
+        "cpu",
+        "memory",
+        "disk",
+        "pulseaudio",
+        "battery",
+        "backlight",
+        "clock",
+        "custom/notification",
+        "tray"
+    ],
+
+    // Configuração dos Módulos
+    "hyprland/workspaces": {
+        "format": "{name}: {icon}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "󰈹",
+            "2": "",
+            "3": "",
+            "4": "󰉋",
+            "5": "",
+            "urgent": "",
+            // "active": "",
+            "default": ""
+        }
+    },
+
+    "hyprland/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "custom/layout": {
+        "exec": "pgrep -x autotiling > /dev/null && echo '[]= ' || echo '><>'",
+        "interval": 1
+    },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    "mpris": {
+        "format": "{player_icon} {artist} - {title}",
+        "player-management": "spotify",
+        "ignored-players": ["firefox", "chromium", "brave", "vlc"],
+        "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+        "player-icons": {
+            "default": "▶",
+            "spotify": " "
+        },
+        "status-icons": {
+            "paused": "󰏤 "
+        },
+        "max-length": 40,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "  {}%",
+        "format-alt": "  {used:0.1f}G", // Ao clicar, mostra em GB
+        "max-length": 10,
+        "tooltip-format": "Used: {used}GiB\nTotal: {total}GiB"
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/",
+        "unit": "GB"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "pulseaudio": {
+        "format": " {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "clock": {
+        "interval": 60,
+        "format": "{:%d %b %Y, %a %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "gnome-calendar" 
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": " ",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": " ",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    "custom/updates": {
+        "format": "{}",
+        "interval": 3600,
+        "exec": "~/.config/waybar/scripts/check-updates.sh",
+        "on-click": "kitty sh -c 'if command -v pacman; then sudo pacman -Syu; elif command -v dnf; then sudo dnf upgrade; else sudo apt update && sudo apt upgrade; fi; exec bash'",
+        "signal": 8
+    }
+}
