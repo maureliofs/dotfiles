@@ -161,6 +161,7 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
+    
     "custom/updates": {
         "format": "{}",
         "interval": 3600,
