@@ -61,6 +61,8 @@
 
     "mpris": {
         "format": "{player_icon} {artist} - {title}",
+        "player-management": "spotify",
+        "ignored-players": ["firefox", "chromium", "brave", "vlc"],
         "format-paused": "{status_icon} <i>{artist} - {title}</i>",
         "player-icons": {
             "default": "▶",
@@ -161,7 +163,7 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
-    
+
     "custom/updates": {
         "format": "{}",
         "interval": 3600,
