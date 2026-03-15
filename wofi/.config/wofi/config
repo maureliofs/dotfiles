@@ -1,0 +1,15 @@
+mode=drun
+
+show=get_icons
+
+gtk_theme=Papirus
+
+width=30%
+height=400
+location=center
+always_parse_dotdesktop=true
+show_all=false
+term=kitty
+allow_images=true
+insensitivy=true
+hide_scroll=true
