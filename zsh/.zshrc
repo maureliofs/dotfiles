@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/marco/.oh-my-zsh"
+export ZSH="/home/mrc/.oh-my-zsh"
 export ZSH_DISABLE_COMPFIX=true
 
 # Set name of the theme to load --- if set to "random", it will
@@ -84,8 +84,6 @@ plugins=(git
         docker
         ansible
         aws
-        kubectl
-        #kube-ps1
         systemd
         terraform
         )
@@ -123,7 +121,6 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   aws           # Amazon Web Services section
-  kubectl
   terraform
   git           # Git section (git_branch + git_status)
   venv          # virtualenv section
@@ -169,8 +166,6 @@ SPACESHIP_KUBECTL_SUFFIX=""
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source <(kubectl completion zsh)
-# source <(flux completion zsh)
 source <(fzf --zsh)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -192,12 +187,6 @@ PATH=$PATH:$HOME/go/bin:$HOME/.local/bin/
 export EDITOR=nvim
 eval "$(zoxide init --cmd cd zsh)"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/marco/google-cloud-sdk/google-cloud-sdk/path.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/marco/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/marco/google-cloud-sdk/google-cloud-sdk/completion.zsh.inc'; fi
-
-export NVIM_APPNAME=lazyvim
+#export NVIM_APPNAME=lazyvim
 #export TERM=xterm-kitty
 export TERM=xterm-256color
