@@ -1,5 +1,5 @@
 /* IMPORTANTE: Mude esta linha para trocar de tema */
-@import url("./themes/catppuccin.css");
+@import url("./themes/catppuccin-frappe.css");
 
 * {
   font-family: 'JetBrainsMono Nerd Font';
@@ -47,5 +47,6 @@ window#waybar {
 
 /* Exemplo usando a cor do tema para atualizações */
 #custom-updates {
+  background: alpha(@surface, 0.6);
   color: @yellow;
 }
