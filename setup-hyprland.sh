@@ -89,8 +89,4 @@ done
 # Linka a pasta do ZSH (que contém o .zshrc)
 stow -v zsh aliases wallpapers fonts
 
-# 6. Finalização
-echo -e "${BLUE}Mudando shell padrão para ZSH...${NC}"
-sudo chsh -s $(which zsh) $USER
-
 echo -e "${GREEN}Setup concluído com sucesso!${NC}"
