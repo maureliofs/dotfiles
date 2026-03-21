@@ -243,7 +243,7 @@ bindsym $mod+x exec clipmenu
 #-------------------------------------------------------------------
 # Theme
 #-------------------------------------------------------------------
-include ~/.config/i3/colorscheme/catppuccin-frappe.config
+include ~/.config/i3/colorscheme/onedark.config
 
 #-------------------------------------------------------------------
 # bar
