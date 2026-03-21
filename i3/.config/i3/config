@@ -248,7 +248,7 @@ include ~/.config/i3/colorscheme/catppuccin-frappe.config
 #-------------------------------------------------------------------
 # bar
 #-------------------------------------------------------------------
-include ~/.config/i3/bar/catppucin-frappe.config
+#include ~/.config/i3/bar/catppucin-frappe.config
 
 
 #-------------------------------------------------------------------
@@ -274,10 +274,10 @@ exec --no-startup-id xset b off & # desliga o bip do terminal
 exec --no-startup-id bash ~/.screenlayout/default.sh 
 exec_always --no-startup-id nitrogen --restore # Restaurar wallpaper
 exec_always --no-startup-id numlockx on # Ativar numlock automaticamente
-# exec_always --no-startup-id picom -f -i 1 -c --backend glx & # Ativar transparência
+exec_always --no-startup-id picom -b 
 # exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
 # exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd & # Ativar daemon de notificacoes do xfce
-exec --no-startup-id /usr/bin/dunst & # Ativar daemon de notificacoes dunst
+exec --no-startup-id /usr/bin/dunst -config ~/.config/dunst/dunstrc & # Ativar daemon de notificacoes dunst
 # exec_always --no-startup-id ~/.dropbox-dist/dropboxd &
 # exec_always --no-startup-id xinput set-prop "SYN1B81:01 06CB:7406 Touchpad" "libinput Tapping Enabled" 1
 # exec_always --no-startup-id xinput set-prop "DELL0957:00 06CB:CDD6 Touchpad" "libinput Tapping Enabled" 1
@@ -288,3 +288,5 @@ exec_always --no-startup-id "setxkbmap -model pc104 -layout us_intl"
 exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
 # exec_always copyq &
 # exec_always clipmenud &
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
