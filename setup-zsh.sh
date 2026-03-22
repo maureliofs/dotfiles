@@ -12,11 +12,11 @@ DOTFILES_DIR="$HOME/.dotfiles"
 echo -e "${BLUE}Configurando ZSH, Oh My Zsh e Plugins...${NC}"
 
 if [ -f /etc/arch-release ]; then
-    sudo pacman -S --needed --noconfirm zsh git curl
+    sudo pacman -S --needed --noconfirm zsh git curl stow
 elif [ -f /etc/fedora-release ]; then
-    sudo dnf install -y zsh git curl
+    sudo dnf install -y zsh git curl stow
 elif [ -f /etc/lsb-release ]; then
-    sudo apt update && sudo apt install -y zsh git curl
+    sudo apt update && sudo apt install -y zsh git curl stow
 fi
 
 # 2. Clonar Dotfiles
