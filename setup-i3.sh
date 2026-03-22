@@ -14,19 +14,19 @@ CONFIG_APPS=("i3" "kitty" "nvim" "dunst" "nitrogen" "picom" "polybar" "rofi")
 echo -e "${BLUE}Instalando dependências e o GNU Stow...${NC}"
 if [ -f /etc/arch-release ]; then
     sudo pacman -S --needed --noconfirm \
-    i3 picom dunst kitty rofi git nitrogen stow neonvim polybar \
+    i3 picom dunst kitty rofi git nitrogen stow neovim polybar \
     papirus-icon-theme lxappearance arc-theme nemo arandr \
     i3lock-fancy btop nm-applet lsd zoxide pavucontrol
 elif [ -f /etc/fedora-release ]; then
     sudo dnf install -y 'dnf-command(copr)'
     sudo dnf copr enable -y solopasha/hyprland
     sudo dnf install -y \
-    i3 picom dunst kitty rofi git nitrogen stow neonvim polybar \
+    i3 picom dunst kitty rofi git nitrogen stow neovim polybar \
     papirus-icon-theme lxappearance arc-theme nemo arandr \
     i3lock-fancy btop nm-applet lsd zoxide pavucontrol
 elif [ -f /etc/lsb-release ]; then
     sudo apt update && sudo apt install -y \
-    i3 picom dunst kitty rofi git nitrogen stow neonvim polybar \
+    i3 picom dunst kitty rofi git nitrogen stow neovim polybar \
     papirus-icon-theme lxappearance arc-theme nemo arandr \
     i3lock-fancy btop network-manager-gnome lsd zoxide pavucontrol
 fi
