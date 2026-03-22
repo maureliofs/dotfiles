@@ -78,4 +78,7 @@ cd "$DOTFILES_DIR"
 # Linka a pasta do ZSH (que contém o .zshrc)
 stow -v zsh
 
+echo -e "${BLUE}Mudando shell padrão para ZSH...${NC}"
+sudo chsh -s $(which zsh) $USER
+
 echo -e "${GREEN}ZSH e Plugins configurados com sucesso!${NC}"
