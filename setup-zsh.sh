@@ -12,11 +12,11 @@ DOTFILES_DIR="$HOME/.dotfiles"
 echo -e "${BLUE}Configurando ZSH, Oh My Zsh e Plugins...${NC}"
 
 if [ -f /etc/arch-release ]; then
-    sudo pacman -S --needed --noconfirm zsh git
+    sudo pacman -S --needed --noconfirm zsh git curl
 elif [ -f /etc/fedora-release ]; then
-    sudo dnf install -y zsh git
+    sudo dnf install -y zsh git curl
 elif [ -f /etc/lsb-release ]; then
-    sudo apt update && sudo apt install -y zsh git
+    sudo apt update && sudo apt install -y zsh git curl
 fi
 
 # 2. Clonar Dotfiles
@@ -30,12 +30,6 @@ fi
 
 # 4. Limpeza de Configurações Existentes
 echo -e "${RED}Limpando diretórios de configuração antigos...${NC}"
-
-# Removendo .zshrc antigo se for um arquivo real
-if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
-    echo "Removendo ~/.zshrc"
-    rm -f "$HOME/.zshrc"
-fi
 
 # 1. Instalar o Oh My Zsh (se não existir)
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -69,6 +63,12 @@ fi
 # 2. Criar o link simbólico para o Oh My Zsh reconhecê-lo como tema
 if [ ! -f "$ZSH_CUSTOM/themes/spaceship.zsh-theme" ]; then
     ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+fi
+
+# Removendo .zshrc antigo se for um arquivo real
+if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+    echo "Removendo ~/.zshrc"
+    rm -f "$HOME/.zshrc"
 fi
 
 # 5. Usar o Stow para criar os links
