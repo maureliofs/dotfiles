@@ -267,7 +267,7 @@ gaps outer 1
 #-------------------------------------------------------------------
 # Exec Start
 #-------------------------------------------------------------------
-exec_always --no-startup-id i3-workspace-names-daemon
+exec_always --no-startup-id exec i3-workspace-names-daemon
 exec --no-startup-id nm-applet # Ativar icone de rede na system tray
 exec --no-startup-id xset b off & # desliga o bip do terminal
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork # Ativar bloqueio de tela
