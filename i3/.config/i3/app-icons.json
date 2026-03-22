@@ -5,7 +5,7 @@
   "Chromium": "chrome",
   "chrome": "chrome",
   "google-chrome": "chrome",
-  "brave-browser": "chrome",
+  "brave-browser": "brave",
   "alacritty": "terminal",
   "Kitty": "terminal",
   "Tilix": "terminal",

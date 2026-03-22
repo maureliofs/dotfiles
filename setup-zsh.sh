@@ -6,7 +6,36 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 
+DOTFILES_REPO="https://github.com/maureliofs/dotfiles"
+DOTFILES_DIR="$HOME/.dotfiles"
+
 echo -e "${BLUE}Configurando ZSH, Oh My Zsh e Plugins...${NC}"
+
+if [ -f /etc/arch-release ]; then
+    sudo pacman -S --needed --noconfirm zsh git
+elif [ -f /etc/fedora-release ]; then
+    sudo dnf install -y zsh git
+elif [ -f /etc/lsb-release ]; then
+    sudo apt update && sudo apt install -y zsh git
+fi
+
+# 2. Clonar Dotfiles
+if [ ! -d "$DOTFILES_DIR" ]; then
+    echo -e "${BLUE}Clonando repositório de dotfiles...${NC}"
+    git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+else
+    echo -e "${GREEN}Repositório já existe. Atualizando...${NC}"
+    cd "$DOTFILES_DIR" && git pull
+fi
+
+# 4. Limpeza de Configurações Existentes
+echo -e "${RED}Limpando diretórios de configuração antigos...${NC}"
+
+# Removendo .zshrc antigo se for um arquivo real
+if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ]; then
+    echo "Removendo ~/.zshrc"
+    rm -f "$HOME/.zshrc"
+fi
 
 # 1. Instalar o Oh My Zsh (se não existir)
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -41,5 +70,12 @@ fi
 if [ ! -f "$ZSH_CUSTOM/themes/spaceship.zsh-theme" ]; then
     ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 fi
+
+# 5. Usar o Stow para criar os links
+echo -e "${GREEN}Aplicando Stow...${NC}"
+cd "$DOTFILES_DIR"
+
+# Linka a pasta do ZSH (que contém o .zshrc)
+stow -v zsh
 
 echo -e "${GREEN}ZSH e Plugins configurados com sucesso!${NC}"
